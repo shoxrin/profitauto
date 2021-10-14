@@ -40,7 +40,7 @@ class Parser:
         announcements = []
         for item in items:
             link = item.find('a', class_ = 'link-link-MbQDP')
-            date = item.find('div', class_ = 'date-text-VwmJG').text
+            timeadd = item.find('div', class_ = 'date-text-VwmJG').text
             if ('Несколько секунд назад' == date or '1 минуту назад' == date) and not(link.get('href') in self.tmp):
                 self.tmp.append(link.get('href'))
                 announcements.append({
@@ -49,7 +49,8 @@ class Parser:
                     'params': item.find('div', class_ = 'iva-item-text-_s_vh').text,
                     'geo': item.find('div', class_ = 'geo-georeferences-Yd_m5').text,
                     'img': item.find('img', class_ = 'photo-slider-image-_Dc4I'),
-                    'link': 'https://www.avito.ru' + link.get('href')
+                    'link': 'https://www.avito.ru' + link.get('href'),
+                    'time': timeadd
                 })
                 if len(self.tmp) == 20:
                     del self.tmp[0:14]
