@@ -36,6 +36,7 @@ class Monitor:
                         announcements = self.parser.getAnnouncements(self.urls[geo][url])
                         if announcements:
                             for announcement in announcements:
+                                print('d', announcement['time'])
                                 self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
                                 mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
                                 if not(mesinfo):
