@@ -36,8 +36,7 @@ class Monitor:
                         announcements = self.parser.getAnnouncements(self.urls[geo][url])
                         if announcements:
                             for announcement in announcements:
-                                print('d', announcement['time'])
-                                self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
+                                self.logger.info('Подгатовка - %s', announcement['title'] + ', ' + announcement['time'])
                                 mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
                                 if not(mesinfo):
                                     time.sleep(0.2)
@@ -59,6 +58,7 @@ class Monitor:
                     title = announcement['title']
                 )
         try:
+            self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
             if announcement['img']['src'] != 'None':
                 embed.set_thumbnail(url = announcement['img']['src'])
                 embed.add_field(name = 'Цена', value = announcement['price'])
@@ -75,7 +75,7 @@ class Monitor:
             
             return True
         except:
-            self.logger.error('Ошибка отправки')
+            self.logger.info('Ошибка отправки')
             return False
 
 if __name__ == '__main__':
