@@ -75,7 +75,7 @@ class Monitor:
             
             return True
         except:
-            self.logger.info('Ошибка отправки')
+            self.logger.info('Ошибка отправки!')
             return False
 
 if __name__ == '__main__':
