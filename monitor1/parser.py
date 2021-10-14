@@ -43,6 +43,7 @@ class Parser:
             timeadd = item.find('div', class_ = 'date-text-VwmJG').text
             if ('Несколько секунд назад' == timeadd or '1 минуту назад' == timeadd) and not(link.get('href') in self.tmp):
                 self.tmp.append(link.get('href'))
+                print(timeadd)
                 announcements.append({
                     'title': link.text,
                     'price': item.find('span', class_ = 'price-text-E1Y7h').text,
