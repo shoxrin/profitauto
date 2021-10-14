@@ -41,7 +41,7 @@ class Parser:
         for item in items:
             link = item.find('a', class_ = 'link-link-MbQDP')
             timeadd = item.find('div', class_ = 'date-text-VwmJG').text
-            if ('Несколько секунд назад' == date or '1 минуту назад' == date) and not(link.get('href') in self.tmp):
+            if ('Несколько секунд назад' == timeadd or '1 минуту назад' == timeadd) and not(link.get('href') in self.tmp):
                 self.tmp.append(link.get('href'))
                 announcements.append({
                     'title': link.text,
