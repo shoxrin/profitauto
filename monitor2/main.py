@@ -1,4 +1,5 @@
 import time
+import logging
 from config import URLS, WEBHOOK_URLS
 import parser
 from discord import Webhook, RequestsWebhookAdapter, Embed, Colour
@@ -6,6 +7,22 @@ from discord import Webhook, RequestsWebhookAdapter, Embed, Colour
 
 class Monitor:
     def __init__(self, urls, webhook_urls):
+        self.logger = logging.getLogger(__name__)
+        self.logger.setLevel(logging.INFO)
+
+        c_handler = logging.StreamHandler()
+        f_handler = logging.FileHandler('../logs/monitor1.log')
+        c_handler.setLevel(logging.INFO)
+        f_handler.setLevel(logging.INFO)
+
+        c_format = logging.Formatter('[%(asctime)s][%(levelname)s]:%(message)s', datefmt='%H:%M:%S')
+        f_format = logging.Formatter('[%(asctime)s][%(levelname)s]:%(message)s', datefmt='%H:%M:%S')
+        c_handler.setFormatter(c_format)
+        f_handler.setFormatter(f_format)
+
+        self.logger.addHandler(c_handler)
+        self.logger.addHandler(f_handler)
+
         self.urls = urls
         self.webhook_urls = webhook_urls
         self.parser = parser.Parser()
@@ -15,18 +32,18 @@ class Monitor:
             try:
                 for geo in self.urls:
                     for url in self.urls[geo]:
-                        print('[INFO]: Поиск новых объявлений! ', str(geo) + ', ' + str(url))
+                        self.logger.info('Поиск новых объявлений! %s', str(geo) + ', ' + str(url))
                         announcements = self.parser.getAnnouncements(self.urls[geo][url])
                         if announcements:
                             for announcement in announcements:
-                                print('[INFO]: Отправка - ', announcement['title'])
+                                self.logger.info('Подготовка - %s', announcement['title'] + ', ' + announcement['time'])
                                 mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
                                 if not(mesinfo):
                                     time.sleep(0.2)
                                     mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
                                 time.sleep(3)
                         else:
-                            print('[INFO]: Новых объявлений нет!')
+                            self.logger.info('Новых объявлений нет!')
                         time.sleep(9)
 
                 time.sleep(10)
@@ -41,6 +58,7 @@ class Monitor:
                     title = announcement['title']
                 )
         try:
+            self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
             if announcement['img']['src'] != 'None':
                 embed.set_thumbnail(url = announcement['img']['src'])
                 embed.add_field(name = 'Цена', value = announcement['price'])
@@ -57,7 +75,7 @@ class Monitor:
             
             return True
         except:
-            print('[INFO]: Ошибка отправки')
+            self.logger.info('Ошибка отправки!')
             return False
 
 if __name__ == '__main__':

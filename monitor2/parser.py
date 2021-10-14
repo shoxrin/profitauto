@@ -1,3 +1,4 @@
+import time
 import requests
 from bs4 import BeautifulSoup
 from requests.sessions import session
@@ -23,7 +24,7 @@ class Parser:
             'http': 'http://user65270:03kyol@185.120.76.193:5609'
         }
 
-        #self.session.proxies = self.proxies
+        self.session.proxies = self.proxies
         self.session.headers = self.headers
 
     def getHTML(self, url):
@@ -39,8 +40,8 @@ class Parser:
         announcements = []
         for item in items:
             link = item.find('a', class_ = 'link-link-MbQDP')
-            date = item.find('div', class_ = 'date-text-VwmJG').text
-            if ('Несколько секунд назад' == date or '1 минуту назад' == date) and not(link.get('href') in self.tmp):
+            timeadd = item.find('div', class_ = 'date-text-VwmJG').text
+            if ('Несколько секунд назад' == timeadd or '1 минуту назад' == timeadd or '2 минуты назад' == timeadd) and not(link.get('href') in self.tmp):
                 self.tmp.append(link.get('href'))
                 announcements.append({
                     'title': link.text,
@@ -48,9 +49,10 @@ class Parser:
                     'params': item.find('div', class_ = 'iva-item-text-_s_vh').text,
                     'geo': item.find('div', class_ = 'geo-georeferences-Yd_m5').text,
                     'img': item.find('img', class_ = 'photo-slider-image-_Dc4I'),
-                    'link': 'https://www.avito.ru' + link.get('href')
+                    'link': 'https://www.avito.ru' + link.get('href'),
+                    'time': timeadd
                 })
-                if len(self.tmp) == 20:
+                if len(self.tmp) == 30:
                     del self.tmp[0:14]
             else:
                 break
