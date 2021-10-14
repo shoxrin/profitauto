@@ -7,6 +7,7 @@ from requests.sessions import session
 class Parser:
     def __init__(self):
         self.tmp = []
+        self.timeadd = ''
         self.session = requests.Session()
         self.headers = {
             'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36',
@@ -40,10 +41,10 @@ class Parser:
         announcements = []
         for item in items:
             link = item.find('a', class_ = 'link-link-MbQDP')
-            timeadd = item.find('div', class_ = 'date-text-VwmJG').text
-            if ('Несколько секунд назад' == timeadd or '1 минуту назад' == timeadd) and not(link.get('href') in self.tmp):
+            self.timeadd = item.find('div', class_ = 'date-text-VwmJG').text
+            if ('Несколько секунд назад' == self.timeadd or '1 минуту назад' == self.timeadd) and not(link.get('href') in self.tmp):
                 self.tmp.append(link.get('href'))
-                print(timeadd)
+                print(self.timeadd)
                 announcements.append({
                     'title': link.text,
                     'price': item.find('span', class_ = 'price-text-E1Y7h').text,
@@ -51,9 +52,9 @@ class Parser:
                     'geo': item.find('div', class_ = 'geo-georeferences-Yd_m5').text,
                     'img': item.find('img', class_ = 'photo-slider-image-_Dc4I'),
                     'link': 'https://www.avito.ru' + link.get('href'),
-                    'time': timeadd
+                    'time': self.timeadd
                 })
-                if len(self.tmp) == 20:
+                if len(self.tmp) == 30:
                     del self.tmp[0:14]
             else:
                 break
