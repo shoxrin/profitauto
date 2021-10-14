@@ -36,10 +36,11 @@ class Monitor:
                         announcements = self.parser.getAnnouncements(self.urls[geo][url])
                         if announcements:
                             for announcement in announcements:
-                                self.logger.info('Подготовка - %s', announcement['title'] + ', ' + announcement['time'])
+                                self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
                                 mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
                                 if not(mesinfo):
                                     time.sleep(0.2)
+                                    self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
                                     mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
                                 time.sleep(3)
                         else:
@@ -58,7 +59,6 @@ class Monitor:
                     title = announcement['title']
                 )
         try:
-            self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
             if announcement['img']['src'] != 'None':
                 embed.set_thumbnail(url = announcement['img']['src'])
                 embed.add_field(name = 'Цена', value = announcement['price'])
@@ -66,12 +66,14 @@ class Monitor:
                 embed.add_field(name = 'Местоположение', value = announcement['geo'])
                 embed.add_field(name = 'Ссылка', value = announcement['link'])
                 webhook.send(embed=embed)
+                self.logger.info('Отправлено - %s', announcement['title'])
             else:
                 embed.add_field(name = 'Цена', value = announcement['price'])
                 embed.add_field(name = 'Параметры', value = announcement['params'])
                 embed.add_field(name = 'Местоположение', value = announcement['geo'])
                 embed.add_field(name = 'Ссылка', value = announcement['link'])
                 webhook.send(embed=embed)
+                self.logger.info('Отправлено - %s', announcement['title'])
             
             return True
         except:
