@@ -1,5 +1,7 @@
 import time
 import logging
+
+import discord
 from config import URLS, WEBHOOK_URLS
 import parser
 from discord import Webhook, RequestsWebhookAdapter, Embed, Colour
@@ -77,8 +79,8 @@ class Monitor:
                 self.logger.info('Отправлено - %s', announcement['title'])
             
             return True
-        except:
-            self.logger.info('Ошибка отправки!')
+        except discord.errors as ex:
+            self.logger.info('Ошибка отправки! %s', ex)
             return False
 
     #Создание логгера
