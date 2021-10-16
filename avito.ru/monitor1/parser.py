@@ -47,7 +47,8 @@ class Parser:
             link = item.find('a', class_ = 'link-link-MbQDP') #Ссылка объявления
             timeadd = item.find('div', class_ = 'date-text-VwmJG').text #Время создания объявления
             #Проверка для получения новых объявлений
-            if ('Несколько секунд назад' == timeadd or '1 минуту назад' == timeadd or '2 минуты назад' == timeadd) and not(link.get('href') in self.tmp):
+            # or '2 минуты назад' == timeadd
+            if ('Несколько секунд назад' == timeadd or '1 минуту назад' == timeadd) and not(link.get('href') in self.tmp):
                 self.tmp.append(link.get('href')) #Добавление использованной ссылки объявления
                 #Наполнение списка с новыми объявлениями
                 announcements.append({

@@ -33,7 +33,7 @@ class Monitor:
                                 mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
                                 #Если объявление не отпраленно
                                 if not(mesinfo):
-                                    time.sleep(1.5)
+                                    time.sleep(2)
                                     self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
                                     #Повторная отправка
                                     mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
