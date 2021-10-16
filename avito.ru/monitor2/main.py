@@ -34,11 +34,11 @@ class Monitor:
                             #Отпрака объявления в дискорд
                             mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
                             #Если объявление не отпраленно
-                            if not(mesinfo):
-                                time.sleep(2)
-                                self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
-                                #Повторная отправка
-                                mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
+                            #if not(mesinfo):
+                            #    time.sleep(2)
+                            #    self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
+                            #    #Повторная отправка
+                            #    mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
                             time.sleep(3)
                     #Если нет объявлений
                     else:
