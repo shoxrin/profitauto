@@ -34,20 +34,20 @@ class Monitor:
                                 mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][webhook_url])
                                 #Если объявление не отпраленно
                                 if not(mesinfo):
-                                    time.sleep(0.2)
+                                    time.sleep(3)
                                     self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
                                     #Повторная отправка
                                     mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][webhook_url])
-                                time.sleep(3)
+                                time.sleep(2)
                         #Если нет объявлений
                         else:
                             self.logger.info('Новых объявлений нет!')
-                        time.sleep(9)
+                        time.sleep(5)
                 #Задержка перед следуюшим регионом
                 time.sleep(10)
             except:
                 #Вслучае ошибки
-                time.sleep(4)
+                time.sleep(5)
 
     #Отправка объявления в канал
     def sendMessage(self, announcement, webhook_url):
