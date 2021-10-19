@@ -1,16 +1,17 @@
 import time
 import logging
-from config import PARAMS, WEBHOOK_URLS
+
+import discord
+from config import URLS, WEBHOOK_URLS
 import parser
 from discord import Webhook, RequestsWebhookAdapter, Embed, Colour
 
 
 class Monitor:
-    def __init__(self, params, webhook_urls):
+    def __init__(self, urls, webhook_urls):
         self.logger = logging.getLogger(__name__) #логер
         self.get_logger() #Вызов функции для настройки логгера
-        self.params = params #Список url для запросов
-        self.url = 'https://auto.ru/-/ajax/desktop/listing/'
+        self.urls = urls #Список url для запросов
         self.webhook_urls = webhook_urls #Список вебхуков
         self.parser = parser.Parser() #Создание объекта парсера
     
@@ -19,25 +20,25 @@ class Monitor:
         while True:
             try:
                 #Перебор регионов
-                for geo in self.webhook_urls:
+                for geo in self.urls:
                     #Перебор url запросов
-                    for webhook_url in self.webhook_urls[geo]:
-                        self.logger.info('Поиск новых объявлений! %s', str(geo) + ', ' + str(webhook_url))
+                    for url in self.urls[geo]:
+                        self.logger.info('Поиск новых объявлений! %s', str(geo) + ', ' + str(url))
                         #Список объявлений
-                        announcements = self.parser.getOffers(self.url, self.params[geo][webhook_url])
+                        announcements = self.parser.getAnnouncements(self.urls[geo][url])
                         #Если есть объявления
                         if announcements:
                             #Перебор объявлений
                             for announcement in announcements:
                                 self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
                                 #Отпрака объявления в дискорд
-                                mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][webhook_url])
+                                mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
                                 #Если объявление не отпраленно
                                 if not(mesinfo):
-                                    time.sleep(0.2)
+                                    time.sleep(2)
                                     self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
                                     #Повторная отправка
-                                    mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][webhook_url])
+                                    mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
                                 time.sleep(3)
                         #Если нет объявлений
                         else:
@@ -59,27 +60,26 @@ class Monitor:
                     title = announcement['title']
                 )
         try:
-            #Если объявление содержит изображение
-            if announcement['img']['src'] != 'None':
-                embed.set_thumbnail(url = announcement['img']['src'])
-                embed.add_field(name = 'Цена', value = announcement['price'])
-                embed.add_field(name = 'Параметры', value = announcement['params'])
-                embed.add_field(name = 'Местоположение', value = announcement['geo'])
-                embed.add_field(name = 'Ссылка', value = announcement['link'])
-                webhook.send(embed=embed)
-                self.logger.info('Отправлено - %s', announcement['title'])
-            #Если объявление не содержит изображение
-            else:
-                embed.add_field(name = 'Цена', value = announcement['price'])
-                embed.add_field(name = 'Параметры', value = announcement['params'])
-                embed.add_field(name = 'Местоположение', value = announcement['geo'])
-                embed.add_field(name = 'Ссылка', value = announcement['link'])
-                webhook.send(embed=embed)
-                self.logger.info('Отправлено - %s', announcement['title'])
+            embed.set_thumbnail(url = announcement['img']['src'])
+            embed.add_field(name = 'Цена', value = announcement['price'])
+            embed.add_field(name = 'Параметры', value = announcement['params'])
+            embed.add_field(name = 'Местоположение', value = announcement['geo'])
+            embed.add_field(name = 'Ссылка', value = announcement['link'])
+            webhook.send(embed=embed)
+            self.logger.info('Отправлено - %s', announcement['title'])
+
+            return True
+        except TypeError:
+            embed.add_field(name = 'Цена', value = announcement['price'])
+            embed.add_field(name = 'Параметры', value = announcement['params'])
+            embed.add_field(name = 'Местоположение', value = announcement['geo'])
+            embed.add_field(name = 'Ссылка', value = announcement['link'])
+            webhook.send(embed=embed)
+            self.logger.info('Отправлено - %s', announcement['title'])
             
             return True
         except:
-            self.logger.info('Ошибка отправки!')
+            self.logger.info('Ошибка отправки! %s', announcement['title'])
             return False
 
     #Создание логгера
@@ -100,4 +100,4 @@ class Monitor:
         self.logger.addHandler(f_handler)
 
 if __name__ == '__main__':
-    Monitor(PARAMS, WEBHOOK_URLS).run()
+    Monitor(URLS, WEBHOOK_URLS).run()

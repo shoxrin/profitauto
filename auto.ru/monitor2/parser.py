@@ -1,11 +1,10 @@
 import time
 import requests
-from bs4 import BeautifulSoup
 
 
 class Parser:
     def __init__(self):
-        self.tmp = ['https://auto.ru/cars/used/sale/ford/fiesta/1105283528-58d94a11'] #Временное хранилище ссылок для отправленных объявлений
+        self.tmp = ['https://auto.ru/cars/used/sale/nissan/almera/1104903010-fc4f028e'] #Временное хранилище ссылок для отправленных объявлений
         self.session = requests.Session() #Создание сессии
         #Заголовки 
         self.headers = {
@@ -32,58 +31,44 @@ class Parser:
             'http': 'http://user65270:03kyol@45.91.160.125:8068'
 
         }
+        self.params = {
+            'section': "all",
+            'category': "cars",
+            'sort': "cr_date-desc",
+            'price_to': 300000,
+            'geo_id': [213]
+        }
         #Добавление прокси и заголовков к сессии
         self.session.proxies = self.proxies
         self.session.headers = self.headers
 
     #Функция для получения объявлений
-    def getData(self, url, params):
-        response = self.session.post(url=url, json=params) #Создание запроса к сайту
+    def getData(self, url):
+        response = self.session.post(url=url, json=self.params) #Создание запроса к сайту
         data = response.json()
-        print('[STATUS_CODE]:', response.status_code)
         return data['offers']
 
     #Функция для сортировки объявлений и получении нужной информации
-    def getOffers(self, url, params):
-        data = self.getData(url, params)
+    def getOffers(self, url):
+        data = self.getData(url)
+        link = ('https://auto.ru/' + data[0]['category'] + '/' + data[0]['section'] + '/sale/' + data[0]['vehicle_info']['mark_info']['code'] + '/' + data[0]['vehicle_info']['model_info']['code'] + '/' + data[0]['saleId']).lower()
         offers = [] #Список с объявлениями
         i = 0 #Переменная для перехода по объявлениям
-        while i <= len(data) - 1: #len(data)-1 это количество пришедших объявлений
+        while not(link in self.tmp): #len(data)-1 это количество пришедших объявлений
             link = ('https://auto.ru/' + data[i]['category'] + '/' + data[i]['section'] + '/sale/' + data[i]['vehicle_info']['mark_info']['code'] + '/' + data[i]['vehicle_info']['model_info']['code'] + '/' + data[i]['saleId']).lower()
-            if not(link in self.tmp):
-                self.tmp.append(link)
-                offers.append({
-                    'title': data[i]['vehicle_info']['mark_info']['name'] + ' ' + data[i]['vehicle_info']['model_info']['name'] + ' ' + str(data[i]['documents']['year']),
-                    'price': str(data[i]['price_info']['price']) + '₽',
-                    'params': data[i]['lk_summary'],
-                    'geo': data[i]['seller']['location']['region_info']['name'],
-                    #'img': data[i]['state']['external_panorama']['published']['picture_png']['preview_first_frame'],
-                    'link': link,
-                })
-                print(offers[i]['title'] + ' - good')
+            self.tmp.append(link)
+            offers.append({
+                'title': data[i]['vehicle_info']['mark_info']['name'] + ' ' + data[i]['vehicle_info']['model_info']['name'] + ' ' + str(data[i]['documents']['year']),
+                'price': str(data[i]['price_info']['price']) + '₽',
+                'params': data[i]['lk_summary'],
+                'geo': data[i]['seller']['location']['region_info']['name'],
+                #'img': data[i]['state']['external_panorama']['published']['picture_png']['preview_first_frame'],
+                'link': link,
+            })
+            print(offers[i]['title'] + ' - good')
+            if i < len(data):
                 i += 1
             else:
                 break
 
         return offers
-
-#p = Parser()
-#pa = {
-#    'section': "all",
-#    'category': "cars",
-#    'sort': "cr_date-desc",
-#    'price_from': 300000,
-#    'price_to': 700000,
-#    'geo_id': [213],
-#    'top_days': "1"
-#}
-#while True:
-#    ann = p.getOffers('https://auto.ru/-/ajax/desktop/listing/', pa)
-#    if ann:
-#        for an in ann:
-#            print(an['title'])
-#            print(an['link'])
-#    else:
-#        print('No offers')
-#
-#    time.sleep(10)
