@@ -32,9 +32,14 @@ class Parser:
     #Функция для получения объявлений
     def getHTML(self, url):
         response = self.session.get(url=url) #Создание запроса к сайту
-        soup = BeautifulSoup(response.content, 'html.parser') #Парсинг ответа
-        items = soup.find_all('div', class_ = 'iva-item-root-Nj_hb') #Формирование списка всех полученных объявлений
+        items = []
         print('[STATUS_CODE]:', response.status_code)
+        while response.status_code != 200:
+            time.sleep(600)
+            response = self.session.get(url=url) #Создание запроса к сайту
+            soup = BeautifulSoup(response.content, 'html.parser') #Парсинг ответа
+            items = soup.find_all('div', class_ = 'iva-item-root-Nj_hb') #Формирование списка всех полученных объявлений
+            print('[STATUS_CODE]:', response.status_code)
 
         return items
 
