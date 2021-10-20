@@ -43,9 +43,9 @@ class Monitor:
                         #Если нет объявлений
                         else:
                             self.logger.info('Новых объявлений нет!')
-                        time.sleep(5)
+                        time.sleep(8)
                 #Задержка перед следуюшим регионом
-                time.sleep(10)
+                time.sleep(5)
             except:
                 #Вслучае ошибки
                 time.sleep(5)
