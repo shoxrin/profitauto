@@ -29,24 +29,25 @@ class Monitor:
                         if announcements:
                             #Перебор объявлений
                             for announcement in announcements:
-                                self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
+                                self.logger.info('Отправка - %s', announcement['title'])
                                 #Отпрака объявления в дискорд
                                 mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][webhook_url])
                                 #Если объявление не отпраленно
                                 if not(mesinfo):
                                     time.sleep(3)
-                                    self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
+                                    self.logger.info('Повторная отправка - %s', announcement['title'])
                                     #Повторная отправка
                                     mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][webhook_url])
                                 time.sleep(2)
                         #Если нет объявлений
                         else:
                             self.logger.info('Новых объявлений нет!')
-                        time.sleep(5)
+                        time.sleep(10)
                 #Задержка перед следуюшим регионом
-                time.sleep(10)
-            except:
+                time.sleep(5)
+            except Exception as ex:
                 #Вслучае ошибки
+                print(ex)
                 time.sleep(5)
 
     #Отправка объявления в канал
@@ -60,8 +61,8 @@ class Monitor:
                 )
         try:
             #Если объявление содержит изображение
-            if announcement['img']['src'] != 'None':
-                embed.set_thumbnail(url = announcement['img']['src'])
+            if announcement:
+                #embed.set_thumbnail(url = announcement['img']['src'])
                 embed.add_field(name = 'Цена', value = announcement['price'])
                 embed.add_field(name = 'Параметры', value = announcement['params'])
                 embed.add_field(name = 'Местоположение', value = announcement['geo'])
@@ -78,8 +79,8 @@ class Monitor:
                 self.logger.info('Отправлено - %s', announcement['title'])
             
             return True
-        except:
-            self.logger.info('Ошибка отправки!')
+        except Exception as ex:
+            self.logger.info('Ошибка отправки! %s', ex)
             return False
 
     #Создание логгера

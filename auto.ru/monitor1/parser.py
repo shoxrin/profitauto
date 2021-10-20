@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 class Parser:
     def __init__(self):
-        self.tmp = ['https://auto.ru/cars/used/sale/ford/fiesta/1105283528-58d94a11'] #Временное хранилище ссылок для отправленных объявлений
+        self.tmp = ['https://auto.ru/cars/used/sale/peugeot/206/1105678477-7d5a43d8'] #Временное хранилище ссылок для отправленных объявлений
         self.session = requests.Session() #Создание сессии
         #Заголовки 
         self.headers = {
@@ -48,22 +48,24 @@ class Parser:
         data = self.getData(url, params)
         offers = [] #Список с объявлениями
         i = 0 #Переменная для перехода по объявлениям
-        while i <= len(data) - 1: #len(data)-1 это количество пришедших объявлений
-            link = ('https://auto.ru/' + data[i]['category'] + '/' + data[i]['section'] + '/sale/' + data[i]['vehicle_info']['mark_info']['code'] + '/' + data[i]['vehicle_info']['model_info']['code'] + '/' + data[i]['saleId']).lower()
-            if not(link in self.tmp):
-                self.tmp.append(link)
-                offers.append({
-                    'title': data[i]['vehicle_info']['mark_info']['name'] + ' ' + data[i]['vehicle_info']['model_info']['name'] + ' ' + str(data[i]['documents']['year']),
-                    'price': str(data[i]['price_info']['price']) + '₽',
-                    'params': data[i]['lk_summary'],
-                    'geo': data[i]['seller']['location']['region_info']['name'],
-                    #'img': data[i]['state']['external_panorama']['published']['picture_png']['preview_first_frame'],
-                    'link': link,
-                })
-                print(offers[i]['title'] + ' - good')
-                i += 1
+        for offer in data: #len(data)-1 это количество пришедших объявлений
+            if i >= 3:
+                link = ('https://auto.ru/' + offer['category'] + '/' + offer['section'] + '/sale/' + offer['vehicle_info']['mark_info']['code'] + '/' + offer['vehicle_info']['model_info']['code'] + '/' + offer['saleId']).lower()
+                if not(link in self.tmp):
+                    self.tmp.append(link)
+                    offers.append({
+                        'title': offer['vehicle_info']['mark_info']['name'] + ' ' + offer['vehicle_info']['model_info']['name'] + ' ' + str(offer['documents']['year']),
+                        'price': str(offer['price_info']['price']) + '₽',
+                        'params': offer['lk_summary'],
+                        'geo': offer['seller']['location']['region_info']['name'],
+                        #'img': offer['state']['external_panorama']['published']['picture_png']['preview_first_frame'],
+                        'link': link,
+                    })
+
+                else:
+                    break
             else:
-                break
+                i += 1
 
         return offers
 
