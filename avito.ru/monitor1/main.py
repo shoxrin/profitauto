@@ -39,14 +39,15 @@ class Monitor:
                                     self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
                                     #Повторная отправка
                                     mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
-                                time.sleep(3)
+                                time.sleep(1)
                         #Если нет объявлений
                         else:
                             self.logger.info('Новых объявлений нет!')
-                        time.sleep(15)
+                        time.sleep(10)
                 #Задержка перед следуюшим регионом
-                time.sleep(3)
-            except:
+                time.sleep(8)
+            except Exception as ex:
+                self.logger.error('Ошибка! %s', ex)
                 #Вслучае ошибки
                 time.sleep(5)
 

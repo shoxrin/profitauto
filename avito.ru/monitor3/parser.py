@@ -35,7 +35,7 @@ class Parser:
         soup = BeautifulSoup(response.content, 'html.parser')
         items = soup.find_all('div', class_ = 'iva-item-root-Nj_hb')
         print('[STATUS_CODE]:', response.status_code)
-        while response.status_code != 200:
+        while response.status_code == 429:
             time.sleep(600)
             response = self.session.get(url=url) #Создание запроса к сайту
             soup = BeautifulSoup(response.content, 'html.parser') #Парсинг ответа
