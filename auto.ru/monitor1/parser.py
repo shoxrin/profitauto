@@ -61,7 +61,7 @@ class Parser:
                     offers.append({
                         'title': offer['vehicle_info']['mark_info']['name'] + ' ' + offer['vehicle_info']['model_info']['name'] + ' ' + str(offer['documents']['year']),
                         'price': str(offer['price_info']['price']) + '₽',
-                        'probeg': offer['state']['mileage'] + 'км',
+                        'probeg': str(offer['state']['mileage']) + 'км',
                         'params': offer['lk_summary'],
                         'geo': offer['seller']['location']['region_info']['name'],
                         'img': [('https:' + offer['state']['image_urls'][0]['sizes']['456x342'])],
