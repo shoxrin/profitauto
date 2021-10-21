@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 class Parser:
     def __init__(self):
-        self.tmp = [] #Временное хранилище ссылок для отправленных объявлений
+        self.tmp = ['https://auto.ru/cars/used/sale/daewoo/nexia/1105637599-8f04b569', 'https://auto.ru/cars/used/sale/mazda/3/1105417842-26cb9596', 'https://auto.ru/cars/used/sale/fiat/500/1104266426-ebaf6e9c', 'https://auto.ru/cars/used/sale/kia/carnival/1105633986-0d6b9d15'] #Временное хранилище ссылок для отправленных объявлений
         self.session = requests.Session() #Создание сессии
         self.status = False
         #Заголовки 
@@ -44,6 +44,10 @@ class Parser:
         print('[STATUS_CODE]:', response.status_code)
         return data['offers']
 
+    def getTmp(self, url, params):
+        data = self.getData(url, params)
+        self.tmp.append(('https://auto.ru/' + data[4]['category'] + '/' + data[4]['section'] + '/sale/' + data[4]['vehicle_info']['mark_info']['code'] + '/' + data[4]['vehicle_info']['model_info']['code'] + '/' + data[4]['saleId']).lower())
+
     #Функция для сортировки объявлений и получении нужной информации
     def getOffers(self, url, params):
         data = self.getData(url, params)
@@ -68,9 +72,6 @@ class Parser:
                         break
                 else:
                     i += 1
-        else:
-            self.tmp.append(('https://auto.ru/' + data[4]['category'] + '/' + data[4]['section'] + '/sale/' + data[4]['vehicle_info']['mark_info']['code'] + '/' + data[4]['vehicle_info']['model_info']['code'] + '/' + data[4]['saleId']).lower())
-            self.status = True
 
         return offers
 

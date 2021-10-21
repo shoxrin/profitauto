@@ -12,7 +12,7 @@ class Monitor:
         self.params = params #Список url для запросов
         self.url = 'https://auto.ru/-/ajax/desktop/listing/'
         self.webhook_urls = webhook_urls #Список вебхуков
-        self.parser = parser.Parser() #Создание объекта парсера
+        self.parser = parser.Parser() #Создание объекта парсера 
     
     #Функция запуска монитора
     def run(self):
@@ -21,11 +21,7 @@ class Monitor:
                 #Перебор регионов
                 for geo in self.webhook_urls:
                     #Перебор url запросов
-                    i = 0
                     for webhook_url in self.webhook_urls[geo]:
-                        if i <= 3:
-                            self.parser.status = False
-                            i += 1
                         self.logger.info('Поиск новых объявлений! %s', str(geo) + ', ' + str(webhook_url))
                         #Список объявлений
                         announcements = self.parser.getOffers(self.url, self.params[geo][webhook_url])
