@@ -57,12 +57,12 @@ class Monitor:
         for geo in self.webhook_urls:
             #Перебор url запросов
             for webhook_url in self.webhook_urls[geo]:
-                self.logger.info('Формирование буфера! %s из 8', i)
+                self.logger.info('Формирование буфера! %s из ', i)
                 self.parser.getTmp(self.url, self.params[geo][webhook_url])
                 i += 1
                 time.sleep(10)
-        #Задержка перед следуюшим регионом
-        time.sleep(5)
+            #Задержка перед следуюшим регионом
+            time.sleep(5)
 
 
     #Отправка объявления в канал
@@ -80,6 +80,7 @@ class Monitor:
                 embed.set_thumbnail(url = announcement['img'][0])
                 embed.add_field(name = 'Цена', value = announcement['price'])
                 embed.add_field(name = 'Параметры', value = announcement['params'])
+                embed.add_field(name = 'Пробег', value = announcement['probeg'])
                 embed.add_field(name = 'Местоположение', value = announcement['geo'])
                 embed.add_field(name = 'Ссылка', value = announcement['link'])
                 webhook.send(embed=embed)

@@ -54,12 +54,14 @@ class Parser:
         i = 0 #Переменная для перехода по объявлениям
         for offer in data: #len(data)-1 это количество пришедших объявлений
             if i >= 3:
+                #offerTime = int(''.join(str(offer['additional_info']['creation_date']).split())[:-3])
                 link = ('https://auto.ru/' + offer['category'] + '/' + offer['section'] + '/sale/' + offer['vehicle_info']['mark_info']['code'] + '/' + offer['vehicle_info']['model_info']['code'] + '/' + offer['saleId']).lower()
-                if not(link in self.tmp):
+                if not(link in self.tmp):# and (time.time() - offerTime <= 60):
                     self.tmp.append(link)
                     offers.append({
                         'title': offer['vehicle_info']['mark_info']['name'] + ' ' + offer['vehicle_info']['model_info']['name'] + ' ' + str(offer['documents']['year']),
                         'price': str(offer['price_info']['price']) + '₽',
+                        'probeg': offer['state']['mileage'] + 'км',
                         'params': offer['lk_summary'],
                         'geo': offer['seller']['location']['region_info']['name'],
                         'img': [('https:' + offer['state']['image_urls'][0]['sizes']['456x342'])],
@@ -88,7 +90,6 @@ class Parser:
 #        for an in ann:
 #            print(an['title'])
 #            print(an['link'])
-#            print(an['img'][0])
 #    else:
 #        print('No offers')
 #
