@@ -5,9 +5,8 @@ from bs4 import BeautifulSoup
 
 class Parser:
     def __init__(self):
-        self.tmp = ['https://auto.ru/cars/used/sale/daewoo/nexia/1105637599-8f04b569', 'https://auto.ru/cars/used/sale/mazda/3/1105417842-26cb9596', 'https://auto.ru/cars/used/sale/fiat/500/1104266426-ebaf6e9c', 'https://auto.ru/cars/used/sale/kia/carnival/1105633986-0d6b9d15'] #Временное хранилище ссылок для отправленных объявлений
+        self.tmp = [] #Временное хранилище ссылок для отправленных объявлений
         self.session = requests.Session() #Создание сессии
-        self.status = False
         #Заголовки 
         self.headers = {
             'Accept': '*/*',
@@ -52,26 +51,25 @@ class Parser:
     def getOffers(self, url, params):
         data = self.getData(url, params)
         offers = [] #Список с объявлениями
-        if self.status:
-            i = 0 #Переменная для перехода по объявлениям
-            for offer in data: #len(data)-1 это количество пришедших объявлений
-                if i >= 3:
-                    link = ('https://auto.ru/' + offer['category'] + '/' + offer['section'] + '/sale/' + offer['vehicle_info']['mark_info']['code'] + '/' + offer['vehicle_info']['model_info']['code'] + '/' + offer['saleId']).lower()
-                    if not(link in self.tmp):
-                        self.tmp.append(link)
-                        offers.append({
-                            'title': offer['vehicle_info']['mark_info']['name'] + ' ' + offer['vehicle_info']['model_info']['name'] + ' ' + str(offer['documents']['year']),
-                            'price': str(offer['price_info']['price']) + '₽',
-                            'params': offer['lk_summary'],
-                            'geo': offer['seller']['location']['region_info']['name'],
-                            'img': [('https:' + offer['state']['image_urls'][0]['sizes']['456x342'])],
-                            'link': link,
-                        })
+        i = 0 #Переменная для перехода по объявлениям
+        for offer in data: #len(data)-1 это количество пришедших объявлений
+            if i >= 3:
+                link = ('https://auto.ru/' + offer['category'] + '/' + offer['section'] + '/sale/' + offer['vehicle_info']['mark_info']['code'] + '/' + offer['vehicle_info']['model_info']['code'] + '/' + offer['saleId']).lower()
+                if not(link in self.tmp):
+                    self.tmp.append(link)
+                    offers.append({
+                        'title': offer['vehicle_info']['mark_info']['name'] + ' ' + offer['vehicle_info']['model_info']['name'] + ' ' + str(offer['documents']['year']),
+                        'price': str(offer['price_info']['price']) + '₽',
+                        'params': offer['lk_summary'],
+                        'geo': offer['seller']['location']['region_info']['name'],
+                        'img': [('https:' + offer['state']['image_urls'][0]['sizes']['456x342'])],
+                        'link': link,
+                    })
 
-                    else:
-                        break
                 else:
-                    i += 1
+                    break
+            else:
+                i += 1
 
         return offers
 #

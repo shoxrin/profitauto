@@ -12,11 +12,11 @@ class Monitor:
         self.params = params #Список url для запросов
         self.url = 'https://auto.ru/-/ajax/desktop/listing/'
         self.webhook_urls = webhook_urls #Список вебхуков
-        self.parser = parser.Parser() #Создание объекта парсера
-        self.parser.status = True 
+        self.parser = parser.Parser() #Создание объекта парсера 
     
     #Функция запуска монитора
     def run(self):
+        self.createTmp()
         while True:
             try:
                 #Перебор регионов
@@ -50,6 +50,20 @@ class Monitor:
                 #Вслучае ошибки
                 print(ex)
                 time.sleep(5)
+
+    def createTmp(self):
+        #Перебор регионов
+        i = 0
+        for geo in self.webhook_urls:
+            #Перебор url запросов
+            for webhook_url in self.webhook_urls[geo]:
+                self.logger.info('Формирование буфера! %s из 8', i)
+                self.parser(self.url, self.params[geo][webhook_url])
+                i += 1
+                time.sleep(10)
+        #Задержка перед следуюшим регионом
+        time.sleep(5)
+
 
     #Отправка объявления в канал
     def sendMessage(self, announcement, webhook_url):
