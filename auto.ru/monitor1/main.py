@@ -21,7 +21,11 @@ class Monitor:
                 #Перебор регионов
                 for geo in self.webhook_urls:
                     #Перебор url запросов
+                    i = 0
                     for webhook_url in self.webhook_urls[geo]:
+                        if i <= 3:
+                            self.parser.status = False
+                            i += 1
                         self.logger.info('Поиск новых объявлений! %s', str(geo) + ', ' + str(webhook_url))
                         #Список объявлений
                         announcements = self.parser.getOffers(self.url, self.params[geo][webhook_url])
@@ -38,7 +42,7 @@ class Monitor:
                                     self.logger.info('Повторная отправка - %s', announcement['title'])
                                     #Повторная отправка
                                     mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][webhook_url])
-                                time.sleep(2)
+                                time.sleep(1)
                         #Если нет объявлений
                         else:
                             self.logger.info('Новых объявлений нет!')
@@ -61,8 +65,8 @@ class Monitor:
                 )
         try:
             #Если объявление содержит изображение
-            if announcement:
-                #embed.set_thumbnail(url = announcement['img']['src'])
+            if announcement['img']:
+                embed.set_thumbnail(url = announcement['img'][0]['src'])
                 embed.add_field(name = 'Цена', value = announcement['price'])
                 embed.add_field(name = 'Параметры', value = announcement['params'])
                 embed.add_field(name = 'Местоположение', value = announcement['geo'])
@@ -80,7 +84,7 @@ class Monitor:
             
             return True
         except Exception as ex:
-            self.logger.info('Ошибка отправки! %s', ex)
+            self.logger.error('Ошибка отправки! %s', ex)
             return False
 
     #Создание логгера

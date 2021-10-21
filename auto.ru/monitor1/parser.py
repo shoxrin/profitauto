@@ -5,8 +5,9 @@ from bs4 import BeautifulSoup
 
 class Parser:
     def __init__(self):
-        self.tmp = ['https://auto.ru/cars/used/sale/peugeot/206/1105678477-7d5a43d8'] #Временное хранилище ссылок для отправленных объявлений
+        self.tmp = [] #Временное хранилище ссылок для отправленных объявлений
         self.session = requests.Session() #Создание сессии
+        self.status = False
         #Заголовки 
         self.headers = {
             'Accept': '*/*',
@@ -47,45 +48,49 @@ class Parser:
     def getOffers(self, url, params):
         data = self.getData(url, params)
         offers = [] #Список с объявлениями
-        i = 0 #Переменная для перехода по объявлениям
-        for offer in data: #len(data)-1 это количество пришедших объявлений
-            if i >= 3:
-                link = ('https://auto.ru/' + offer['category'] + '/' + offer['section'] + '/sale/' + offer['vehicle_info']['mark_info']['code'] + '/' + offer['vehicle_info']['model_info']['code'] + '/' + offer['saleId']).lower()
-                if not(link in self.tmp):
-                    self.tmp.append(link)
-                    offers.append({
-                        'title': offer['vehicle_info']['mark_info']['name'] + ' ' + offer['vehicle_info']['model_info']['name'] + ' ' + str(offer['documents']['year']),
-                        'price': str(offer['price_info']['price']) + '₽',
-                        'params': offer['lk_summary'],
-                        'geo': offer['seller']['location']['region_info']['name'],
-                        #'img': offer['state']['external_panorama']['published']['picture_png']['preview_first_frame'],
-                        'link': link,
-                    })
+        if self.status:
+            i = 0 #Переменная для перехода по объявлениям
+            for offer in data: #len(data)-1 это количество пришедших объявлений
+                if i >= 3:
+                    link = ('https://auto.ru/' + offer['category'] + '/' + offer['section'] + '/sale/' + offer['vehicle_info']['mark_info']['code'] + '/' + offer['vehicle_info']['model_info']['code'] + '/' + offer['saleId']).lower()
+                    if not(link in self.tmp):
+                        self.tmp.append(link)
+                        offers.append({
+                            'title': offer['vehicle_info']['mark_info']['name'] + ' ' + offer['vehicle_info']['model_info']['name'] + ' ' + str(offer['documents']['year']),
+                            'price': str(offer['price_info']['price']) + '₽',
+                            'params': offer['lk_summary'],
+                            'geo': offer['seller']['location']['region_info']['name'],
+                            'img': [('https:' + offer['state']['image_urls'][0]['sizes']['456x342'])],
+                            'link': link,
+                        })
 
+                    else:
+                        break
                 else:
-                    break
-            else:
-                i += 1
+                    i += 1
+        else:
+            self.tmp.append(('https://auto.ru/' + data[4]['category'] + '/' + data[4]['section'] + '/sale/' + data[4]['vehicle_info']['mark_info']['code'] + '/' + data[4]['vehicle_info']['model_info']['code'] + '/' + data[4]['saleId']).lower())
+            self.status = True
 
         return offers
 
-#p = Parser()
-#pa = {
-#    'section': "all",
-#    'category': "cars",
-#    'sort': "cr_date-desc",
-#    'price_from': 300000,
-#    'price_to': 700000,
-#    'geo_id': [213],
-#    'top_days': "1"
-#}
-#while True:
-#    ann = p.getOffers('https://auto.ru/-/ajax/desktop/listing/', pa)
-#    if ann:
-#        for an in ann:
-#            print(an['title'])
-#            print(an['link'])
-#    else:
-#        print('No offers')
-#
-#    time.sleep(10)
+p = Parser()
+pa = {
+    'section': "all",
+    'category': "cars",
+    'sort': "cr_date-desc",
+    'price_to': 300000,
+    'geo_id': [10174],
+    'top_days': "1"
+}
+while True:
+    ann = p.getOffers('https://auto.ru/-/ajax/desktop/listing/', pa)
+    if ann:
+        for an in ann:
+            print(an['title'])
+            print(an['link'])
+            print(an['img'][0])
+    else:
+        print('No offers')
+
+    time.sleep(10)
