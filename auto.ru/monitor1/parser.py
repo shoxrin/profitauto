@@ -74,24 +74,24 @@ class Parser:
                     i += 1
 
         return offers
-
-p = Parser()
-pa = {
-    'section': "all",
-    'category': "cars",
-    'sort': "cr_date-desc",
-    'price_to': 300000,
-    'geo_id': [10174],
-    'top_days': "1"
-}
-while True:
-    ann = p.getOffers('https://auto.ru/-/ajax/desktop/listing/', pa)
-    if ann:
-        for an in ann:
-            print(an['title'])
-            print(an['link'])
-            print(an['img'][0])
-    else:
-        print('No offers')
-
-    time.sleep(10)
+#
+#p = Parser()
+#pa = {
+#    'section': "all",
+#    'category': "cars",
+#    'sort': "cr_date-desc",
+#    'price_to': 300000,
+#    'geo_id': [10174],
+#    'top_days': "1"
+#}
+#while True:
+#    ann = p.getOffers('https://auto.ru/-/ajax/desktop/listing/', pa)
+#    if ann:
+#        for an in ann:
+#            print(an['title'])
+#            print(an['link'])
+#            print(an['img'][0])
+#    else:
+#        print('No offers')
+#
+#    time.sleep(10)
