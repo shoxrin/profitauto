@@ -58,7 +58,7 @@ class Monitor:
             #Перебор url запросов
             for webhook_url in self.webhook_urls[geo]:
                 self.logger.info('Формирование буфера! %s из 8', i)
-                self.parser(self.url, self.params[geo][webhook_url])
+                self.parser.getTmp(self.url, self.params[geo][webhook_url])
                 i += 1
                 time.sleep(10)
         #Задержка перед следуюшим регионом
