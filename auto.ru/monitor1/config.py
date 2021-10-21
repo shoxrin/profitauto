@@ -8,32 +8,32 @@ PARAMS = {
             'geo_id': [10174],
             'top_days': "1"
         },
-        #'300-700': {
-        #    'section': "all",
-        #    'category': "cars",
-        #    'sort': "cr_date-desc",
-        #    'price_from': 300000,
-        #    'price_to': 700000,
-        #    'geo_id': [10174],
-        #    'top_days': "1"
-        #},
-        #'700-1,5млн': {
-        #    'section': "all",
-        #    'category': "cars",
-        #    'sort': "cr_date-desc",
-        #    'price_from': 700000,
-        #    'price_to': 1500000,
-        #    'geo_id': [10174],
-        #    'top_days': "1"
-        #},
-        #'1,5млн>': {
-        #    'section': "all",
-        #    'category': "cars",
-        #    'sort': "cr_date-desc",
-        #    'price_from': 1500000,
-        #    'geo_id': [10174],
-        #    'top_days': "1"
-        #}
+        '300-700': {
+            'section': "all",
+            'category': "cars",
+            'sort': "cr_date-desc",
+            'price_from': 300000,
+            'price_to': 700000,
+            'geo_id': [10174],
+            'top_days': "1"
+        },
+        '700-1,5млн': {
+            'section': "all",
+            'category': "cars",
+            'sort': "cr_date-desc",
+            'price_from': 700000,
+            'price_to': 1500000,
+            'geo_id': [10174],
+            'top_days': "1"
+        },
+        '1,5млн>': {
+            'section': "all",
+            'category': "cars",
+            'sort': "cr_date-desc",
+            'price_from': 1500000,
+            'geo_id': [10174],
+            'top_days': "1"
+        }
     },
     #'Архангельск': {
     #    'до 300к': {
