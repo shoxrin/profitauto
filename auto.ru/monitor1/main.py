@@ -12,7 +12,8 @@ class Monitor:
         self.params = params #Список url для запросов
         self.url = 'https://auto.ru/-/ajax/desktop/listing/'
         self.webhook_urls = webhook_urls #Список вебхуков
-        self.parser = parser.Parser() #Создание объекта парсера 
+        self.parser = parser.Parser() #Создание объекта парсера
+        self.parser.status = True 
     
     #Функция запуска монитора
     def run(self):
