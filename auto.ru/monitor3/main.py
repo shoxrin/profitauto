@@ -12,10 +12,11 @@ class Monitor:
         self.params = params #Список url для запросов
         self.url = 'https://auto.ru/-/ajax/desktop/listing/'
         self.webhook_urls = webhook_urls #Список вебхуков
-        self.parser = parser.Parser() #Создание объекта парсера
+        self.parser = parser.Parser() #Создание объекта парсера 
     
     #Функция запуска монитора
     def run(self):
+        self.createTmp()
         while True:
             try:
                 #Перебор регионов
@@ -29,25 +30,40 @@ class Monitor:
                         if announcements:
                             #Перебор объявлений
                             for announcement in announcements:
-                                self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
+                                self.logger.info('Отправка - %s', announcement['title'])
                                 #Отпрака объявления в дискорд
                                 mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][webhook_url])
                                 #Если объявление не отпраленно
                                 if not(mesinfo):
-                                    time.sleep(0.2)
-                                    self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
+                                    time.sleep(3)
+                                    self.logger.info('Повторная отправка - %s', announcement['title'])
                                     #Повторная отправка
                                     mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][webhook_url])
-                                time.sleep(3)
+                                time.sleep(1)
                         #Если нет объявлений
                         else:
                             self.logger.info('Новых объявлений нет!')
-                        time.sleep(9)
+                        time.sleep(10)
                 #Задержка перед следуюшим регионом
-                time.sleep(10)
-            except:
+                time.sleep(5)
+            except Exception as ex:
                 #Вслучае ошибки
-                time.sleep(4)
+                print(ex)
+                time.sleep(5)
+
+    def createTmp(self):
+        #Перебор регионов
+        i = 0
+        for geo in self.webhook_urls:
+            #Перебор url запросов
+            for webhook_url in self.webhook_urls[geo]:
+                self.logger.info('Формирование буфера! %s из ', i)
+                self.parser.getTmp(self.url, self.params[geo][webhook_url])
+                i += 1
+                time.sleep(10)
+            #Задержка перед следуюшим регионом
+            time.sleep(5)
+
 
     #Отправка объявления в канал
     def sendMessage(self, announcement, webhook_url):
@@ -60,10 +76,11 @@ class Monitor:
                 )
         try:
             #Если объявление содержит изображение
-            if announcement['img']['src'] != 'None':
-                embed.set_thumbnail(url = announcement['img']['src'])
+            if announcement['img']:
+                embed.set_thumbnail(url = announcement['img'][0])
                 embed.add_field(name = 'Цена', value = announcement['price'])
                 embed.add_field(name = 'Параметры', value = announcement['params'])
+                embed.add_field(name = 'Пробег', value = announcement['probeg'])
                 embed.add_field(name = 'Местоположение', value = announcement['geo'])
                 embed.add_field(name = 'Ссылка', value = announcement['link'])
                 webhook.send(embed=embed)
@@ -78,8 +95,8 @@ class Monitor:
                 self.logger.info('Отправлено - %s', announcement['title'])
             
             return True
-        except:
-            self.logger.info('Ошибка отправки!')
+        except Exception as ex:
+            self.logger.error('Ошибка отправки! %s', ex)
             return False
 
     #Создание логгера
@@ -87,7 +104,7 @@ class Monitor:
         self.logger.setLevel(logging.INFO)
 
         c_handler = logging.StreamHandler()
-        f_handler = logging.FileHandler('../logs/monitor1.log')
+        f_handler = logging.FileHandler('../logs/monitor3.log')
         c_handler.setLevel(logging.INFO)
         f_handler.setLevel(logging.INFO)
 
