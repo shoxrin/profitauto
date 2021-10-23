@@ -41,7 +41,7 @@ PARAMS = {
             'category': "cars",
             'sort': "cr_date-desc",
             'price_to': 300000,
-            'geo_id': [213],
+            'geo_id': [10842],
             'top_days': "1"
         },
         '300-700': {
@@ -50,7 +50,7 @@ PARAMS = {
             'sort': "cr_date-desc",
             'price_from': 300000,
             'price_to': 700000,
-            'geo_id': [213],
+            'geo_id': [10842],
             'top_days': "1"
         },
         '700-1,5млн': {
@@ -59,7 +59,7 @@ PARAMS = {
             'sort': "cr_date-desc",
             'price_from': 700000,
             'price_to': 1500000,
-            'geo_id': [213],
+            'geo_id': [10842],
             'top_days': "1"
         },
         '1,5млн>': {
@@ -67,7 +67,7 @@ PARAMS = {
             'category': "cars",
             'sort': "cr_date-desc",
             'price_from': 1500000,
-            'geo_id': [213],
+            'geo_id': [10842],
             'top_days': "1"
         }
     },
