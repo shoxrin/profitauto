@@ -1,2 +1,3 @@
-if 'None' == None:
+sre = 'None'
+if sre is None:
     print('good')
