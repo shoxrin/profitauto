@@ -53,11 +53,11 @@ class Parser:
             print(item.find('div', class_='css-x98spp e1vivdbi1'))
             #Проверка для получения новых объявлений
             # or '2 минуты назад' == timeadd
+            if item.find('div', class_='css-x98spp e1vivdbi1') is None:
+                    print('good')
             if (timeadd == '1 минуту назад' or timeadd == 'Несколько секунд назад') and not(link in self.tmp):
                 self.tmp.append(link) #Добавление использованной ссылки объявления
                 #Наполнение списка с новыми объявлениями
-                if item.find('div', class_='css-x98spp e1vivdbi1') is None:
-                    print('good')
                 announcements.append({
                     'title': item.find('div', class_='css-1svsmzw e1vivdbi2').find('span').text,
                     'price': item.find('span', class_="css-bhd4b0 e162wx9x0").text,
