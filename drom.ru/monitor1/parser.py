@@ -50,7 +50,8 @@ class Parser:
         for item in items:
             link = item.get('href') #Ссылка объявления
             timeadd = item.find('div', attrs={'data-ftid': 'bull_date'}).text #Время создания объявления
-           #Проверка для получения новых объявлений
+            print(timeadd)
+            #Проверка для получения новых объявлений
             # or '2 минуты назад' == timeadd
             if (timeadd == '1 минуту назад' or timeadd == 'Несколько секунд назад') and not(link in self.tmp):
                 self.tmp.append(link) #Добавление использованной ссылки объявления
