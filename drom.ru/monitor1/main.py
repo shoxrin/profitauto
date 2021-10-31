@@ -13,7 +13,7 @@ class Monitor:
         self.get_logger() #Вызов функции для настройки логгера
         self.urls = urls #Список url для запросов
         self.webhook_urls = webhook_urls #Список вебхуков
-        self.parser = parser.Parser() #Создание объекта парсера
+        self.parser = parser.Parser(self.logger) #Создание объекта парсера
     
     #Функция запуска монитора
     def run(self):

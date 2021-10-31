@@ -4,9 +4,10 @@ from bs4 import BeautifulSoup
 
 
 class Parser:
-    def __init__(self):
+    def __init__(self, logger):
         self.tmp = [] #Временное хранилище ссылок для отправленных объявлений
         self.session = requests.Session() #Создание сессии
+        self.logger = logger
         #Заголовки 
         self.headers = {
             "accept": "application/json, text/javascript, */*; q=0.01",
@@ -33,13 +34,13 @@ class Parser:
         response = self.session.get(url=url) #Создание запроса к сайту
         soup = BeautifulSoup(response.content, 'html.parser')
         items = soup.find_all('a', attrs={'data-ftid': 'bulls-list_bull'})
-        print('[STATUS_CODE]:', response.status_code)
+        self.logger.info('[STATUS_CODE]:%s', response.status_code)
         while response.status_code == 429:
             time.sleep(600)
             response = self.session.get(url=url) #Создание запроса к сайту
             soup = BeautifulSoup(response.content, 'html.parser') #Парсинг ответа
             items = soup.find_all('a', attrs={'data-ftid': 'bulls-list_bull'}) #Формирование списка всех полученных объявлений
-            print('[STATUS_CODE]:', response.status_code)
+            self.logger.info('[STATUS_CODE]:%s', response.status_code)
         return items
 
     #Функция для сортировки объявлений и получении нужной информации
@@ -53,19 +54,22 @@ class Parser:
             #Проверка для получения новых объявлений
             # or '2 минуты назад' == timeadd
             if item.find('div', class_='css-x98spp e1vivdbi1') is None:
-                print(timeadd)
+                self.logger.info('Время последнего объявления:%s', timeadd)
                 if (timeadd == 'минуту назад' or timeadd == 'Несколько секунд назад' or '2 минуты назад' == timeadd) and not(link in self.tmp):
                     self.tmp.append(link) #Добавление использованной ссылки объявления
                     #Наполнение списка с новыми объявлениями
-                    announcements.append({
-                        'title': item.find('div', class_='css-1svsmzw e1vivdbi2').find('span').text,
-                        'price': item.find('span', class_="css-bhd4b0 e162wx9x0").text,
-                        'params': item.find('div', class_='css-3xai0o e162wx9x0').text,
-                        'geo': item.find('span', class_="css-fbscyn e162wx9x0").text.split()[0],
-                        'img': item.find('div', attrs={'data-ftid': 'bull_image'}).find('noscript').find('img'),
-                        'link': link,
-                        'time': timeadd 
-                    })
+                    try:
+                        announcements.append({
+                            'title': item.find('div', class_='css-1svsmzw e1vivdbi2').find('span').text,
+                            'price': item.find('span', class_="css-bhd4b0 e162wx9x0").text,
+                            'params': item.find('div', class_='css-3xai0o e162wx9x0').text,
+                            'geo': item.find('span', class_="css-fbscyn e162wx9x0").text.split()[0],
+                            'img': item.find('div', attrs={'data-ftid': 'bull_image'}).find('noscript').find('img'),
+                            'link': link,
+                            'time': timeadd 
+                        })
+                    except Exception as ex:
+                        self.logger.error('Ошибка%s', ex)
                     #Очистка хранилища использованных ссылок
                     if len(self.tmp) == 30:
                         del self.tmp[0:14]
