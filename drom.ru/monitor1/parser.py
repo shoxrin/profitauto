@@ -54,7 +54,7 @@ class Parser:
             # or '2 минуты назад' == timeadd
             if item.find('div', class_='css-x98spp e1vivdbi1') is None:
                 print(timeadd)
-                if (timeadd == 'минуту назад' or timeadd == 'Несколько секунд назад') and not(link in self.tmp):
+                if (timeadd == 'минуту назад' or timeadd == 'Несколько секунд назад' or '2 минуты назад' == timeadd) and not(link in self.tmp):
                     self.tmp.append(link) #Добавление использованной ссылки объявления
                     #Наполнение списка с новыми объявлениями
                     announcements.append({
