@@ -63,7 +63,7 @@ class Monitor:
         try:
             #Если объявление содержит изображение
             if not(announcement['img'] is None):
-                embed.set_thumbnail(url = announcement['img'])
+                embed.set_thumbnail(url = announcement['img']['href'])
                 embed.add_field(name = 'Цена', value = announcement['price'])
                 embed.add_field(name = 'Параметры', value = announcement['params'])
                 embed.add_field(name = 'Местоположение', value = announcement['geo'])
