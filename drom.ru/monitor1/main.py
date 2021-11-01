@@ -61,26 +61,28 @@ class Monitor:
                     title = announcement['title']
                 )
         try:
-            embed.set_thumbnail(url = announcement['img']['src'])
-            embed.add_field(name = 'Цена', value = announcement['price'])
-            embed.add_field(name = 'Параметры', value = announcement['params'])
-            embed.add_field(name = 'Местоположение', value = announcement['geo'])
-            embed.add_field(name = 'Ссылка', value = announcement['link'])
-            webhook.send(embed=embed)
-            self.logger.info('Отправлено - %s', announcement['title'])
-
-            return True
-        except TypeError:
-            embed.add_field(name = 'Цена', value = announcement['price'])
-            embed.add_field(name = 'Параметры', value = announcement['params'])
-            embed.add_field(name = 'Местоположение', value = announcement['geo'])
-            embed.add_field(name = 'Ссылка', value = announcement['link'])
-            webhook.send(embed=embed)
-            self.logger.info('Отправлено - %s', announcement['title'])
+            #Если объявление содержит изображение
+            if not(announcement['img'] is None):
+                embed.set_thumbnail(url = announcement['img'][0])
+                embed.add_field(name = 'Цена', value = announcement['price'])
+                embed.add_field(name = 'Параметры', value = announcement['params'])
+                embed.add_field(name = 'Пробег', value = announcement['probeg'])
+                embed.add_field(name = 'Местоположение', value = announcement['geo'])
+                embed.add_field(name = 'Ссылка', value = announcement['link'])
+                webhook.send(embed=embed)
+                self.logger.info('Отправлено - %s', announcement['title'])
+            #Если объявление не содержит изображение
+            else:
+                embed.add_field(name = 'Цена', value = announcement['price'])
+                embed.add_field(name = 'Параметры', value = announcement['params'])
+                embed.add_field(name = 'Местоположение', value = announcement['geo'])
+                embed.add_field(name = 'Ссылка', value = announcement['link'])
+                webhook.send(embed=embed)
+                self.logger.info('Отправлено - %s', announcement['title'])
             
             return True
-        except:
-            self.logger.info('Ошибка отправки! %s', announcement['title'])
+        except Exception as ex:
+            self.logger.error('Ошибка отправки! %s', ex)
             return False
 
     #Создание логгера
