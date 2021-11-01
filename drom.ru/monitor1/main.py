@@ -60,30 +60,30 @@ class Monitor:
                     color = Colour.blue(), 
                     title = announcement['title']
                 )
-        try:
+        #try:
             #Если объявление содержит изображение
-            if not(announcement['img'] is None):
-                embed.set_thumbnail(url = announcement['img'][0])
-                embed.add_field(name = 'Цена', value = announcement['price'])
-                embed.add_field(name = 'Параметры', value = announcement['params'])
-                embed.add_field(name = 'Пробег', value = announcement['probeg'])
-                embed.add_field(name = 'Местоположение', value = announcement['geo'])
-                embed.add_field(name = 'Ссылка', value = announcement['link'])
-                webhook.send(embed=embed)
-                self.logger.info('Отправлено - %s', announcement['title'])
+            #if not(announcement['img'] is None):
+        embed.set_thumbnail(url = announcement['img'][0])
+        embed.add_field(name = 'Цена', value = announcement['price'])
+        embed.add_field(name = 'Параметры', value = announcement['params'])
+        embed.add_field(name = 'Пробег', value = announcement['probeg'])
+        embed.add_field(name = 'Местоположение', value = announcement['geo'])
+        embed.add_field(name = 'Ссылка', value = announcement['link'])
+        webhook.send(embed=embed)
+        self.logger.info('Отправлено - %s', announcement['title'])
             #Если объявление не содержит изображение
-            else:
-                embed.add_field(name = 'Цена', value = announcement['price'])
-                embed.add_field(name = 'Параметры', value = announcement['params'])
-                embed.add_field(name = 'Местоположение', value = announcement['geo'])
-                embed.add_field(name = 'Ссылка', value = announcement['link'])
-                webhook.send(embed=embed)
-                self.logger.info('Отправлено - %s', announcement['title'])
-            
-            return True
-        except Exception as ex:
-            self.logger.error('Ошибка отправки! %s', ex)
-            return False
+            #else:
+            #    embed.add_field(name = 'Цена', value = announcement['price'])
+            #    embed.add_field(name = 'Параметры', value = announcement['params'])
+            #    embed.add_field(name = 'Местоположение', value = announcement['geo'])
+            #    embed.add_field(name = 'Ссылка', value = announcement['link'])
+            #    webhook.send(embed=embed)
+            #    self.logger.info('Отправлено - %s', announcement['title'])
+            #
+        return True
+        #except Exception as ex:
+        #    self.logger.error('Ошибка отправки! %s', ex)
+        #    return False
 
     #Создание логгера
     def get_logger(self):
