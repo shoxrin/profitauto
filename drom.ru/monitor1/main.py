@@ -66,7 +66,6 @@ class Monitor:
                 embed.set_thumbnail(url = announcement['img'])
                 embed.add_field(name = 'Цена', value = announcement['price'])
                 embed.add_field(name = 'Параметры', value = announcement['params'])
-                embed.add_field(name = 'Пробег', value = announcement['probeg'])
                 embed.add_field(name = 'Местоположение', value = announcement['geo'])
                 embed.add_field(name = 'Ссылка', value = announcement['link'])
                 webhook.send(embed=embed)
