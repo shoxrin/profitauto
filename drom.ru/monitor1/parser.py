@@ -58,18 +58,26 @@ class Parser:
                 if (timeadd == 'минуту назад' or timeadd == '3 минуты назад' or '2 минуты назад' == timeadd) and not(link in self.tmp):
                     self.tmp.append(link) #Добавление использованной ссылки объявления
                     #Наполнение списка с новыми объявлениями
-                    #try:
-                    announcements.append({
-                        'title': item.find('div', class_='css-1svsmzw e1vivdbi2').find('span').text,
-                        'price': item.find('span', class_="css-bhd4b0 e162wx9x0").text,
-                        'params': item.find('div', class_='css-3xai0o e162wx9x0').text,
-                        'geo': item.find('span', class_="css-fbscyn e162wx9x0").text.split()[0],
-                        'img': item.find('div', attrs={'data-ftid': 'bull_image'}).find('noscript').find('img'),
-                        'link': link,
-                        'time': timeadd 
-                    })
-                    #except Exception as ex:
-                    #    self.logger.error('Ошибка%s', ex)
+                    try:
+                        announcements.append({
+                            'title': item.find('div', class_='css-1svsmzw e1vivdbi2').find('span').text,
+                            'price': item.find('span', class_="css-bhd4b0 e162wx9x0").text,
+                            'params': item.find('div', class_='css-3xai0o e162wx9x0').text,
+                            'geo': item.find('span', class_="css-fbscyn e162wx9x0").text.split()[0],
+                            'img': item.find('div', attrs={'data-ftid': 'bull_image'}).find('noscript').find('img'),
+                            'link': link,
+                            'time': timeadd 
+                        })
+                    except Exception as ex:
+                        announcements.append({
+                            'title': item.find('div', class_='css-1svsmzw e1vivdbi2').find('span').text,
+                            'price': item.find('span', class_="css-bhd4b0 e162wx9x0").text,
+                            'params': item.find('div', class_='css-3xai0o e162wx9x0').text,
+                            'geo': item.find('span', class_="css-fbscyn e162wx9x0").text.split()[0],
+                            'img': None,
+                            'link': link,
+                            'time': timeadd 
+                        })
                     #Очистка хранилища использованных ссылок
                     if len(self.tmp) == 30:
                         del self.tmp[0:14]
