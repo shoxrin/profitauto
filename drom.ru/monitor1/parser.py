@@ -78,6 +78,8 @@ class Parser:
                             'link': link,
                             'time': timeadd 
                         })
+                        print(announcements)
+
                     #Очистка хранилища использованных ссылок
                     if len(self.tmp) == 30:
                         del self.tmp[0:14]
