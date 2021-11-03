@@ -53,36 +53,35 @@ class Parser:
             timeadd = item.find('div', attrs={'data-ftid': 'bull_date'}).text #Время создания объявления
             #Проверка для получения новых объявлений
             # or '2 минуты назад' == timeadd
-            if item.find('div', class_='css-x98spp e1vivdbi1') is None:
-                self.logger.info('Время последнего объявления:%s', timeadd)
-                if (timeadd == 'минуту назад' or timeadd == '3 минуты назад' or '2 минуты назад' == timeadd) and not(link in self.tmp):
-                    self.tmp.append(link) #Добавление использованной ссылки объявления
-                    #Наполнение списка с новыми объявлениями
-                    try:
-                        announcements.append({
-                            'title': item.find('div', class_='css-1svsmzw e1vivdbi2').find('span').text,
-                            'price': item.find('span', class_="css-bhd4b0 e162wx9x0").text,
-                            'params': item.find('div', class_='css-3xai0o e162wx9x0').text,
-                            'geo': item.find('span', class_="css-fbscyn e162wx9x0").text.split()[0],
-                            'img': item.find('div', attrs={'data-ftid': 'bull_image'}).find('img', class_='css-1mnj4qi evrha4s0'),
-                            'link': link,
-                            'time': timeadd 
-                        })
-                    except Exception as ex:
-                        announcements.append({
-                            'title': item.find('div', class_='css-1svsmzw e1vivdbi2').find('span').text,
-                            'price': item.find('span', class_="css-bhd4b0 e162wx9x0").text,
-                            'params': item.find('div', class_='css-3xai0o e162wx9x0').text,
-                            'geo': item.find('span', class_="css-fbscyn e162wx9x0").text.split()[0],
-                            'img': None,
-                            'link': link,
-                            'time': timeadd 
-                        })
-                        print(ex)
+            #if item.find('div', class_='css-x98spp e1vivdbi1') is None:
+            if (timeadd == 'минуту назад' or timeadd == '3 минуты назад' or '2 минуты назад' == timeadd) and (timeadd != 'сегодня') and not(link in self.tmp):
+                self.tmp.append(link) #Добавление использованной ссылки объявления
+                #Наполнение списка с новыми объявлениями
+                try:
+                    announcements.append({
+                        'title': item.find('div', class_='css-1svsmzw e1vivdbi2').find('span').text,
+                        'price': item.find('span', class_="css-bhd4b0 e162wx9x0").text,
+                        'params': item.find('div', class_='css-3xai0o e162wx9x0').text,
+                        'geo': item.find('span', class_="css-fbscyn e162wx9x0").text.split()[0],
+                        'img': item.find('div', attrs={'data-ftid': 'bull_image'}).find('img', class_='css-1mnj4qi evrha4s0'),
+                        'link': link,
+                        'time': timeadd 
+                    })
+                except Exception as ex:
+                    announcements.append({
+                        'title': item.find('div', class_='css-1svsmzw e1vivdbi2').find('span').text,
+                        'price': item.find('span', class_="css-bhd4b0 e162wx9x0").text,
+                        'params': item.find('div', class_='css-3xai0o e162wx9x0').text,
+                        'geo': item.find('span', class_="css-fbscyn e162wx9x0").text.split()[0],
+                        'img': None,
+                        'link': link,
+                        'time': timeadd 
+                    })
+                    print(ex)
 
-                    #Очистка хранилища использованных ссылок
-                    if len(self.tmp) == 30:
-                        del self.tmp[0:14]
+                #Очистка хранилища использованных ссылок
+                if len(self.tmp) == 30:
+                    del self.tmp[0:14]
 
         return announcements
 
