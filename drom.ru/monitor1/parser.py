@@ -64,7 +64,7 @@ class Parser:
                             'price': item.find('span', class_="css-bhd4b0 e162wx9x0").text,
                             'params': item.find('div', class_='css-3xai0o e162wx9x0').text,
                             'geo': item.find('span', class_="css-fbscyn e162wx9x0").text.split()[0],
-                            'img': item.find('div', attrs={'data-ftid': 'bull_image'}).find('noscript').find('img'),
+                            'img': item.find('div', attrs={'data-ftid': 'bull_image'}).find('img', class_='css-1mnj4qi evrha4s0'),
                             'link': link,
                             'time': timeadd 
                         })
@@ -78,13 +78,11 @@ class Parser:
                             'link': link,
                             'time': timeadd 
                         })
-                        print(announcements)
+                        print(ex)
 
                     #Очистка хранилища использованных ссылок
                     if len(self.tmp) == 30:
                         del self.tmp[0:14]
-                else:
-                    break
 
         return announcements
 
