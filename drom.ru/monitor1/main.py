@@ -93,8 +93,8 @@ class Monitor:
         c_handler.setLevel(logging.INFO)
         f_handler.setLevel(logging.INFO)
 
-        c_format = logging.Formatter('[%(asctime)s][%(levelname)s]:%(message)s', datefmt='%H:%M:%S')
-        f_format = logging.Formatter('[%(asctime)s][%(levelname)s]:%(message)s', datefmt='%H:%M:%S')
+        c_format = logging.Formatter('[%(asctime)s][%(levelname)s]:%(message)s', datefmt='%D.%M-%H:%M:%S')
+        f_format = logging.Formatter('[%(asctime)s][%(levelname)s]:%(message)s', datefmt='%D.%M-%H:%M:%S')
         c_handler.setFormatter(c_format)
         f_handler.setFormatter(f_format)
 
