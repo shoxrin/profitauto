@@ -2,10 +2,11 @@ import os, sys
 
 def main():
     try:
-        #os.system('sudo apt update && sudo apt upgrade -y')
-        #os.system('sudo apt install git supervisor -y')
-        #os.system('source .venv/bin/activate')
-        #os.system('pip install -r requirements.txt')
+        os.system('sudo apt update && sudo apt upgrade -y')
+        os.system('sudo apt install supervisor -y')
+        os.system('source .venv/bin/activate')
+        os.system('pip install -r requirements.txt')
+
         if sys.argv[1] == '-a':
             #setting avito.ru monitor
             pass
