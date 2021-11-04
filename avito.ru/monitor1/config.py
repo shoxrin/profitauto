@@ -10,8 +10,9 @@ URLS = {
         '300-700': 'https://www.avito.ru/arhangelsk/avtomobili?pmin=300000&pmax=700000&s=104',
         '700-1,5млн': 'https://www.avito.ru/arhangelsk/avtomobili?pmin=700000&pmax=1500000&s=104',
         '1,5млн>': 'https://www.avito.ru/arhangelsk/avtomobili?pmin=1500000&s=104'
-    },
+    }, 
 }
+
 
 WEBHOOK_URLS = {
     'СПБ': {

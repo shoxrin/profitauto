@@ -13,6 +13,7 @@ URLS = {
     },
 }
 
+
 WEBHOOK_URLS = {
     'ЕКБ': {
         'до 300к': 'https://discord.com/api/webhooks/895273021894426665/XopIy4_TbxSaHDtJvpjydr1uilSBiStQfUCaELeRZ_QWJzsvBtMcQp0UvrkAc9wmhcRJ',

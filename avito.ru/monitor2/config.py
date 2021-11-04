@@ -13,6 +13,7 @@ URLS = {
     },
 }
 
+
 WEBHOOK_URLS = {
     'МСК': {
         'до 300к': 'https://discord.com/api/webhooks/895275115472887808/08NleXFVdeeSgVrELKcYxiRKZoLyL9-5qVxYCQgyUOzux_Xh-URtLPeU8Ey6LfP29l9C',

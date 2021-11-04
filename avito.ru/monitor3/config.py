@@ -13,6 +13,7 @@ URLS = {
     },
 }
 
+
 WEBHOOK_URLS = {
     'Самара': {
         'до 300к': 'https://discord.com/api/webhooks/895273910659067904/J5ANGHj8IGT5XA4HeKK2kb9V7chxRn2iblI5ptvB8S4UZqc1auX6oXxLtqLXV4xUmevv',
