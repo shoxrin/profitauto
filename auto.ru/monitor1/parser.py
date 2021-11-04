@@ -67,7 +67,6 @@ class Parser:
                         'img': [('https:' + offer['state']['image_urls'][0]['sizes']['456x342'])],
                         'link': link,
                     })
-
                 else:
                     break
             else:

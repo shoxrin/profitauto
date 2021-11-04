@@ -66,10 +66,8 @@ class Parser:
                     'link': 'https://www.avito.ru' + link.get('href'),
                     'time': timeadd
                 })
-                #Очистка хранилища использованных ссылок
-                if len(self.tmp) == 30:
-                    del self.tmp[0:14]
-            else:
-                break
+            #Очистка хранилища использованных ссылок
+            if len(self.tmp) == 30:
+                del self.tmp[0:14]
 
         return announcements
