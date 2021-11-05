@@ -68,6 +68,7 @@ class Parser:
                         'link': link,
                         'time': timeadd 
                     })
+                    self.logger.error('Ошибка!')
                 except Exception as ex:
                     announcements.append({
                         'title': item.find('div', class_='css-1svsmzw e1vivdbi2').find('span').text,
