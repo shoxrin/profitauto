@@ -26,7 +26,7 @@ class Parser:
             'http': 'http://user65270:03kyol@45.91.160.125:8068'
         }
         #Добавление прокси и заголовков к сессии
-        self.session.proxies = self.proxies
+        #self.session.proxies = self.proxies
         self.session.headers = self.headers
 
     #Функция для получения объявлений
