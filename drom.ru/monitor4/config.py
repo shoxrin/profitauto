@@ -1,9 +1,9 @@
 URLS = {
     'ЕКБ': {
-        'до 300к': 'https://www.avito.ru/ekaterinburg/avtomobili?pmax=300000&s=104',
-        '300-700': 'https://www.avito.ru/ekaterinburg/avtomobili?pmin=300000&pmax=700000&s=104',
-        '700-1,5млн': 'https://www.avito.ru/ekaterinburg/avtomobili?pmin=700000&pmax=1500000&s=104',
-        '1,5млн>': 'https://www.avito.ru/ekaterinburg/avtomobili/s_probegom?pmin=1500000&s=104'
+        'до 300к': 'https://ekaterinburg.drom.ru/auto/all/?maxprice=300000',
+        '300-700': 'https://ekaterinburg.drom.ru/auto/all/?minprice=300000&maxprice=700000',
+        '700-1,5млн': 'https://ekaterinburg.drom.ru/auto/all/?minprice=700000&maxprice=1500000',
+        '1,5млн>': 'https://ekaterinburg.drom.ru/auto/used/all/?minprice=1500000'
     },
     'Казань': {
         'до 300к': 'https://www.avito.ru/kazan/avtomobili?pmax=300000&s=104',

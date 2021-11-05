@@ -1,15 +1,15 @@
 URLS = {
     'МСК': {
-        'до 300к': 'https://www.avito.ru/moskva_i_mo/avtomobili?pmax=300000&s=104',
-        '300-700': 'https://www.avito.ru/moskva_i_mo/avtomobili?pmin=300000&pmax=700000&s=104',
-        '700-1,5млн': 'https://www.avito.ru/moskva_i_mo/avtomobili?pmin=700000&pmax=1500000&s=104',
-        '1,5млн>': 'https://www.avito.ru/moskva_i_mo/avtomobili/s_probegom?pmin=1500000&s=104'
+        'до 300к': 'https://auto.drom.ru/region77/all/?maxprice=300000',
+        '300-700': 'https://auto.drom.ru/region77/all/?minprice=300000&maxprice=700000',
+        '700-1,5млн': 'https://auto.drom.ru/region77/all/?minprice=700000&maxprice=1500000',
+        '1,5млн>': 'https://auto.drom.ru/region77/used/?minprice=1500000'
     },
     'Ростов-на-дону': {
-        'до 300к': 'https://www.avito.ru/rostov-na-donu/avtomobili?pmax=300000&s=104',
+        'до 300к': 'https://rostov-na-donu.drom.ru/auto/all/?maxprice=300000',
         '300-700': 'https://www.avito.ru/rostov-na-donu/avtomobili?pmin=300000&pmax=700000&s=104',
-        '700-1,5млн': 'https://www.avito.ru/rostov-na-donu/avtomobili?pmin=700000&pmax=1500000&s=104',
-        '1,5млн>': 'https://www.avito.ru/rostov-na-donu/avtomobili/s_probegom?pmin=1500000&s=104'
+        '700-1,5млн': 'https://rostov-na-donu.drom.ru/auto/all/?minprice=700000&maxprice=1500000',
+        '1,5млн>': 'https://rostov-na-donu.drom.ru/auto/used/all/?minprice=1500000'
     },
 }
 

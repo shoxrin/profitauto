@@ -1,15 +1,15 @@
 URLS = {
     'СПБ': {
-        'до 300к': 'https://www.avito.ru/sankt_peterburg_i_lo/avtomobili?pmax=300000&s=104',
+        'до 300к': 'https://www.avito.ru/sankt_peterburg_i_lo/avtomobili/?pmax=300000&s=104',
         '300-700': 'https://www.avito.ru/sankt_peterburg_i_lo/avtomobili?pmin=300000&pmax=700000&s=104',
         '700-1,5млн': 'https://www.avito.ru/sankt_peterburg_i_lo/avtomobili?pmin=700000&pmax=1500000&s=104',
-        '1,5млн>': 'https://www.avito.ru/sankt_peterburg_i_lo/avtomobili?pmin=1500000&s=104'
+        '1,5млн>': 'https://www.avito.ru/sankt_peterburg_i_lo/avtomobili/s_probegom?pmin=1500000&s=104'
     },
     'Архангельск': {
         'до 300к': 'https://www.avito.ru/arhangelsk/avtomobili?pmax=300000&s=104',
         '300-700': 'https://www.avito.ru/arhangelsk/avtomobili?pmin=300000&pmax=700000&s=104',
         '700-1,5млн': 'https://www.avito.ru/arhangelsk/avtomobili?pmin=700000&pmax=1500000&s=104',
-        '1,5млн>': 'https://www.avito.ru/arhangelsk/avtomobili?pmin=1500000&s=104'
+        '1,5млн>': 'https://www.avito.ru/arhangelsk/avtomobili/s_probegom?pmin=1500000&s=104'
     }, 
 }
 

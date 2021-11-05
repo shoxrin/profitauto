@@ -27,7 +27,7 @@ PARAMS = {
             'top_days': "1"
         },
         '1,5млн>': {
-            'section': "all",
+            'section': "used",
             'category': "cars",
             'sort': "cr_date-desc",
             'price_from': 1500000,
@@ -63,12 +63,12 @@ PARAMS = {
             'top_days': "1"
         },
         '1,5млн>': {
-            'section': "all",
+            'section': "used",
             'category': "cars",
             'sort': "cr_date-desc",
             'price_from': 1500000,
             'geo_id': [10842],
-            'top_days': "1"
+            'top_days': "1",
         }
     },
 }

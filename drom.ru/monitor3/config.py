@@ -1,15 +1,15 @@
 URLS = {
     'Самара': {
-        'до 300к': 'https://www.avito.ru/samara/avtomobili?pmax=300000&s=104',
-        '300-700': 'https://www.avito.ru/samara/avtomobili?pmin=300000&pmax=700000&s=104',
-        '700-1,5млн': 'https://www.avito.ru/samara/avtomobili?pmin=700000&pmax=1500000&s=104',
-        '1,5млн>': 'https://www.avito.ru/samara/avtomobili/s_probegom?pmin=1500000&s=104'
+        'до 300к': 'https://samara.drom.ru/auto/all/?maxprice=300000',
+        '300-700': 'https://samara.drom.ru/auto/all/?minprice=300000&maxprice=700000',
+        '700-1,5млн': 'https://samara.drom.ru/auto/all/?minprice=700000&maxprice=1500000',
+        '1,5млн>': 'https://samara.drom.ru/auto/used/all/?minprice=1500000'
     },
     'Омск': {
-        'до 300к': 'https://www.avito.ru/omsk/avtomobili?pmax=300000&s=104',
-        '300-700': 'https://www.avito.ru/omsk/avtomobili?pmin=300000&pmax=700000&s=104',
-        '700-1,5млн': 'https://www.avito.ru/omsk/avtomobili?pmin=700000&pmax=1500000&s=104',
-        '1,5млн>': 'https://www.avito.ru/omsk/avtomobili/s_probegom?pmin=1500000&s=104'
+        'до 300к': 'https://omsk.drom.ru/auto/all/?maxprice=300000',
+        '300-700': 'https://omsk.drom.ru/auto/all/?minprice=300000&maxprice=700000',
+        '700-1,5млн': 'https://omsk.drom.ru/auto/all/?minprice=700000&maxprice=1500000',
+        '1,5млн>': 'https://omsk.drom.ru/auto/used/all/?minprice=1500000'
     },
 }
 
