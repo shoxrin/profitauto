@@ -89,7 +89,7 @@ class Monitor:
         self.logger.setLevel(logging.INFO)
 
         c_handler = logging.StreamHandler()
-        f_handler = logging.FileHandler('../profitauto/drom.ru/logs/monitor1.log')
+        f_handler = logging.FileHandler('..logs/monitor1.log')
         c_handler.setLevel(logging.INFO)
         f_handler.setLevel(logging.INFO)
 
