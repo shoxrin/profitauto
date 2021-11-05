@@ -78,7 +78,7 @@ class Parser:
                         'link': link,
                         'time': timeadd 
                     })
-                    print(ex)
+                    self.logger.error('Ошибка -', ex)
 
                 #Очистка хранилища использованных ссылок
                 if len(self.tmp) == 30:
