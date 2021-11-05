@@ -70,6 +70,7 @@ class Monitor:
                 embed.add_field(name = 'Ссылка', value = announcement['link'])
                 webhook.send(embed=embed)
                 self.logger.info('Отправлено - %s', announcement['title'])
+                self.logger.info('Отправлено c img - %s', announcement['img']['src'])
             #Если объявление не содержит изображение
             else:
                 embed.add_field(name = 'Цена', value = announcement['price'])
@@ -78,6 +79,7 @@ class Monitor:
                 embed.add_field(name = 'Ссылка', value = announcement['link'])
                 webhook.send(embed=embed)
                 self.logger.info('Отправлено - %s', announcement['title'])
+                self.logger.info('Отправлено без img - %s', announcement['img']['src'])
             
             return True
         except Exception as ex:
