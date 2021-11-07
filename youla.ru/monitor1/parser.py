@@ -72,8 +72,8 @@ class Parser:
                     #Наполнение списка с новыми объявлениями
                     img = item.find('div', class_='product_item__image').find('image')
                     announcements.append({
-                        'title': link.get('title'),
-                        'price': item.find('div', class_="product_item__description").text,
+                        'title': link.get('title').strip(),
+                        'price': item.find('div', class_="product_item__description").text.strip(),
                         'params': '',
                         'geo': item.find('span', class_='product_item__location').text,
                         'img': img,
@@ -111,7 +111,7 @@ class Parser:
 #        for an in ann:
 #            print(an['link'])
 #            print(an['title'])
-#            print(an['img']['xlink:href'])
+#            print(an['price'])
 #            time.sleep(2)
 #    else:
 #        print('No offers')
