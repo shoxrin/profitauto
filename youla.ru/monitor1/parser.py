@@ -6,12 +6,12 @@ from bs4 import BeautifulSoup
 
 
 class Parser:
-    def __init__(self, logger):
+    def __init__(self):
         self.tmp = [] #Временное хранилище ссылок для отправленных объявлений
         self.session = requests.Session() #Создание сессии
-        #self.logger = logging.getLogger(__name__)
-        #self.get_logger()
-        self.logger = logger
+        self.logger = logging.getLogger(__name__)
+        self.get_logger()
+        #self.logger = logger
         #Заголовки 
         self.headers = {
             "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
@@ -70,13 +70,13 @@ class Parser:
                 if (timenow - timeaddif <= 120 and timenow - timeaddif >= 0 and dateadd == 'сегодня') and not(link.get('href') in self.tmp):
                     self.tmp.append(link.get('href')) #Добавление использованной ссылки объявления
                     #Наполнение списка с новыми объявлениями
-                    
+                    img = item.find('div', class_='product_item__image').find('image')
                     announcements.append({
                         'title': link.get('title'),
                         'price': item.find('div', class_="product_item__description").text,
                         'params': '',
                         'geo': item.find('span', class_='product_item__location').text,
-                        'img': item.find('div', class_='product_item__image').find('image'),
+                        'img': img,
                         'link': link.get('href'),
                         'time': timeadd 
                     })
@@ -105,14 +105,13 @@ class Parser:
         self.logger.addHandler(f_handler)
 
 #p = Parser()
-
 #while True:
 #    ann = p.getAnnouncements('https://youla.ru/sankt-peterburg/auto?attributes[price][to]=30000000&attributes[sort_field]=date_published')
 #    if ann:
 #        for an in ann:
 #            print(an['link'])
 #            print(an['title'])
-#            print(an['time'])
+#            print(an['img']['xlink:href'])
 #            time.sleep(2)
 #    else:
 #        print('No offers')
