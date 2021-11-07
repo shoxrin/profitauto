@@ -61,11 +61,11 @@ class Monitor:
                     title = announcement['title']
                 )
         try:
-            #Если объявление содержит изображение
+        #Если объявление содержит изображение
             if not(announcement['img'] is None):
                 embed.set_thumbnail(url = announcement['img']['xlink:href'])
                 embed.add_field(name = 'Цена', value = announcement['price'])
-                embed.add_field(name = 'Параметры', value = announcement['params'])
+                #embed.add_field(name = 'Параметры', value = announcement['params'])
                 embed.add_field(name = 'Местоположение', value = announcement['geo'])
                 embed.add_field(name = 'Ссылка', value = announcement['link'])
                 webhook.send(embed=embed)
