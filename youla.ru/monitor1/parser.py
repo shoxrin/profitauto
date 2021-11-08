@@ -59,10 +59,13 @@ class Parser:
         for item in items:
             if not('product_item--promoted' in item.get('class')):
                 link = item.find('a') #Ссылка объявления
-                timeadd = item.find('div', class_='product_item__date').text #Время создания объявления
+                timeadd = item.find('div', class_='product_item__date').text #Время создания объявления              
                 dateadd = str(timeadd.split(' ')[0])
                 timeadd = str(str(timeadd.split(' ')[len(timeadd.split(' '))-1]).split('.')[0])[:-2]
-                timeaddif = int(timeadd.split(':')[0]) * 60 + int(timeadd.split(':')[1]) * 60
+                try:
+                    timeaddif = int(timeadd.split(':')[0]) * 60 + int(timeadd.split(':')[1]) * 60
+                except:
+                    continue
                 timenow = datetime.now().time().hour * 60 + datetime.now().time().minute * 60
                 #Проверка для получения новых объявлений
                 # or '2 минуты назад' == timeadd
