@@ -78,7 +78,8 @@ class Parser:
                         'geo': item.find('span', class_='product_item__location').text,
                         'img': img,
                         'link': 'https://youla.ru' + str(link.get('href')),
-                        'time': timeadd + ' ' + dateadd
+                        'time': timeadd,
+                        'ts': [timenow, timeaddif]
                     })
 
             #Очистка хранилища использованных ссылок
