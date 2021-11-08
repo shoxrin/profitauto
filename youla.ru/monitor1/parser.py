@@ -62,8 +62,8 @@ class Parser:
                 timeadd = item.find('div', class_='product_item__date').text #Время создания объявления              
                 dateadd = str(timeadd.split(' ')[0])
                 timeadd = str(str(timeadd.split(' ')[len(timeadd.split(' '))-1]).split('.')[0])[:-2]
-                timeaddif = int(timeadd.split(':')[0]) * 60 + int(timeadd.split(':')[1]) * 60
-                timenow = datetime.now().time().hour * 60 + datetime.now().time().minute * 60
+                timeaddif = int(timeadd.split(':')[0]) * 60 * 60 + int(timeadd.split(':')[1]) * 60
+                timenow = datetime.now().time().hour * 60 * 60 + datetime.now().time().minute * 60
                 #Проверка для получения новых объявлений
                 # or '2 минуты назад' == timeadd
                 #if item.find('div', class_='css-x98spp e1vivdbi1') is None:
