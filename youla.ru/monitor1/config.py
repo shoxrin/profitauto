@@ -1,9 +1,9 @@
 URLS = {
     'СПБ': {
-        'до 300к': 'https://youla.ru/sankt-peterburg/auto?attributes[price][to]=30000000&attributes[sort_field]=date_published',
-        '300-700': 'https://youla.ru/sankt-peterburg/auto?attributes[price][from]=30000000&attributes[price][to]=70000000&attributes[sort_field]=date_published',
-        '700-1,5млн': 'https://youla.ru/sankt-peterburg/auto?attributes[price][from]=70000000&attributes[price][to]=1500000&attributes[sort_field]=date_published',
-        '1,5млн>': 'https://youla.ru/sankt-peterburg/auto?attributes[price][to]=1500000&attributes[sort_field]=date_published'
+        'до 300к': 'https://youla.ru/sankt-peterburg/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][to]=30000000&attributes[sort_field]=date_published',
+        '300-700': 'https://youla.ru/sankt-peterburg/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][from]=30000000&attributes[price][to]=70000000&attributes[sort_field]=date_published',
+        '700-1,5млн': 'https://youla.ru/sankt-peterburg/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][from]=70000000&attributes[price][to]=1500000&attributes[sort_field]=date_published',
+        '1,5млн>': 'https://youla.ru/sankt-peterburg/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][to]=1500000&attributes[sort_field]=date_published'
     },
     #'Архангельск': {
     #    'до 300к': 'https://youla.ru/sankt-peterburg/auto?attributes[price][to]=30000000&attributes[sort_field]=date_published',
