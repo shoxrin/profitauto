@@ -77,7 +77,7 @@ class Parser:
                         'params': '',
                         'geo': item.find('span', class_='product_item__location').text,
                         'img': img,
-                        'link': link.get('href'),
+                        'link': 'https://youla.ru' + str(link.get('href')),
                         'time': timeadd 
                     })
 
