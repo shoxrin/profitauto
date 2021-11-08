@@ -31,7 +31,7 @@ class Monitor:
                         #Перебор объявлений
                         for announcement in announcements:
                             self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
-                            self.logger.info(announcement['ts'][0] + ', ' + announcement['ts'][1])
+                            self.logger.info(str(announcement['ts'][0]) + ', ' + str(announcement['ts'][1]))
                             #Отпрака объявления в дискорд
                             mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
                             #Если объявление не отпраленно
