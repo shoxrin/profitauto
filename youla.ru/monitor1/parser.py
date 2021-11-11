@@ -6,36 +6,35 @@ from bs4 import BeautifulSoup
 
 
 class Parser:
-    def __init__(self, logger):
+    def __init__(self):
         self.tmp = [] #Временное хранилище ссылок для отправленных объявлений
         self.session = requests.Session() #Создание сессии
-        #self.logger = logging.getLogger(__name__)
-        #self.get_logger()
-        self.logger = logger
+        self.logger = logging.getLogger(__name__)
+        self.get_logger()
+        #self.logger = logger
         #Заголовки 
         self.headers = {
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-            "accept-encoding": "gzip, deflate, br",
-            "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
-            "Connection": "keep-alive",
-            "Referer": "https://youla.ru/all/auto",
-            "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "same-origin",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
-            "x-requested-with": "XMLHttpRequest"
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Cache-Control': 'max-age=0',
+            'Connection': 'keep-alive',
+            'Host': 'youla.ru',
+            'Referer': 'https://youla.ru/',
+            'sec-ch-ua': '"Google Chrome";v="95", "Chromium";v="95", ";Not A Brand";v="99"',
+            'Upgrade-Insecure-Requests': '1',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 6.0; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0'
         }
         #Прокси
         self.proxies = {
-            'https': 'http://user65270:03kyol@195.96.159.233:15463',
-            'http': 'http://user65270:03kyol@195.96.159.233:15463'
+            #'https': 'http://user65270:03kyol@45.91.160.125:18068',
+            'http': 'http://user65270:03kyol@45.91.160.125:18068'
 
         }
         #Добавление прокси и заголовков к сессии
         self.session.proxies = self.proxies
         self.session.headers = self.headers
-        self.session.cookies.clear()
+        #self.session.cookies.clear()
 
     #Функция для получения объявлений
     def getHTML(self, url):
@@ -107,7 +106,7 @@ class Parser:
 
 #p = Parser()
 #while True:
-#    ann = p.getAnnouncements('https://youla.ru/sankt-peterburg/auto?attributes[price][to]=30000000&attributes[sort_field]=date_published')
+#    ann = p.getAnnouncements('https://youla.ru/sankt-peterburg/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][to]=30000000&attributes[sort_field]=date_published&attributes[term_of_placement][from]=-1%20day&attributes[term_of_placement][to]=now')
 #    if ann:
 #        for an in ann:
 #            print(an['link'])

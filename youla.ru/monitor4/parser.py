@@ -28,7 +28,7 @@ class Parser:
         }
         #Прокси
         self.proxies = {
-            'https': 'http://user65270:03kyol@194.26.216.183:3816',
+            #'https': 'http://user65270:03kyol@194.26.216.183:3816',
             'http': 'http://user65270:03kyol@194.26.216.183:3816'
 
         }

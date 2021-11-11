@@ -21,3 +21,18 @@
 [22:16:08][INFO]:[STATUS_CODE]:200
 [22:16:08][INFO]:Отправка - Ford Fiesta, 2006 в Санкт-Петербурге, 22:15
 [22:16:09][INFO]:Отправлено - Ford Fiesta, 2006 в Санкт-Петербурге
+[13:38:32][INFO]:Поиск новых объявлений! СПБ, до 300к
+[13:38:32][ERROR]:Ошибка! ('Connection aborted.', BadStatusLine('\x00[\x00\x00\x00\x00\x00\x00'))
+[13:40:00][INFO]:Поиск новых объявлений! СПБ, до 300к
+[13:40:01][ERROR]:Ошибка! ('Connection aborted.', BadStatusLine('\x00[\x00\x00\x00\x00\x00\x00'))
+[13:40:06][INFO]:Поиск новых объявлений! СПБ, до 300к
+[13:40:06][ERROR]:Ошибка! ('Connection aborted.', BadStatusLine('\x00[\x00\x00\x00\x00\x00\x00'))
+[13:40:11][INFO]:Поиск новых объявлений! СПБ, до 300к
+[13:40:11][ERROR]:Ошибка! ('Connection aborted.', BadStatusLine('\x00[\x00\x00\x00\x00\x00\x00'))
+[14:33:51][INFO]:[STATUS_CODE]:429
+[14:34:41][INFO]:[STATUS_CODE]:200
+[14:34:52][INFO]:[STATUS_CODE]:200
+[14:35:03][INFO]:[STATUS_CODE]:200
+[14:35:14][INFO]:[STATUS_CODE]:200
+[14:35:25][INFO]:[STATUS_CODE]:200
+[14:35:36][INFO]:[STATUS_CODE]:200
