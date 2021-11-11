@@ -6,12 +6,12 @@ from bs4 import BeautifulSoup
 
 
 class Parser:
-    def __init__(self):
+    def __init__(self, logger):
         self.tmp = [] #Временное хранилище ссылок для отправленных объявлений
         self.session = requests.Session() #Создание сессии
-        self.logger = logging.getLogger(__name__)
-        self.get_logger()
-        #self.logger = logger
+        #self.logger = logging.getLogger(__name__)
+        #self.get_logger()
+        self.logger = logger
         #Заголовки 
         self.headers = {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
