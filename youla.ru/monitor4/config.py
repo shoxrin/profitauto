@@ -1,30 +1,30 @@
 URLS = {
     'ЕКБ': {
-        'до 300к': 'https://ekaterinburg.drom.ru/auto/all/?maxprice=300000',
-        '300-700': 'https://ekaterinburg.drom.ru/auto/all/?minprice=300000&maxprice=700000',
-        '700-1,5млн': 'https://ekaterinburg.drom.ru/auto/all/?minprice=700000&maxprice=1500000',
-        '1,5млн>': 'https://ekaterinburg.drom.ru/auto/used/all/?minprice=1500000'
+        'до 300к': 'https://youla.ru/ekaterinburg/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][to]=30000000&attributes[sort_field]=date_published&attributes[term_of_placement][from]=-1%20day&attributes[term_of_placement][to]=now',
+        '300-700': 'https://youla.ru/ekaterinburg/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][from]=30000000&attributes[price][to]=70000000&attributes[sort_field]=date_published&attributes[term_of_placement][from]=-1%20day&attributes[term_of_placement][to]=now',
+        '700-1,5млн': 'https://youla.ru/ekaterinburg/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][from]=70000000&attributes[price][to]=1500000&attributes[sort_field]=date_published&attributes[term_of_placement][from]=-1%20day&attributes[term_of_placement][to]=now',
+        '1,5млн>': 'https://youla.ru/ekaterinburg/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][to]=1500000&attributes[sort_field]=date_published&attributes[term_of_placement][from]=-1%20day&attributes[term_of_placement][to]=now'
     },
     'Казань': {
-        'до 300к': 'https://www.avito.ru/kazan/avtomobili?pmax=300000&s=104',
-        '300-700': 'https://www.avito.ru/kazan/avtomobili?pmin=300000&pmax=700000&s=104',
-        '700-1,5млн': 'https://www.avito.ru/kazan/avtomobili?pmin=700000&pmax=1500000&s=104',
-        '1,5млн>': 'https://www.avito.ru/kazan/avtomobili/s_probegom?pmin=1500000&s=104'
+        'до 300к': 'https://youla.ru/kazan/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][to]=30000000&attributes[sort_field]=date_published&attributes[term_of_placement][from]=-1%20day&attributes[term_of_placement][to]=now',
+        '300-700': 'https://youla.ru/kazan/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][from]=30000000&attributes[price][to]=70000000&attributes[sort_field]=date_published&attributes[term_of_placement][from]=-1%20day&attributes[term_of_placement][to]=now',
+        '700-1,5млн': 'https://youla.ru/kazan/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][from]=70000000&attributes[price][to]=1500000&attributes[sort_field]=date_published&attributes[term_of_placement][from]=-1%20day&attributes[term_of_placement][to]=now',
+        '1,5млн>': 'https://youla.ru/kazan/auto/s-probegom?attributes[auto_owner_type][0]=161309&attributes[price][to]=1500000&attributes[sort_field]=date_published&attributes[term_of_placement][from]=-1%20day&attributes[term_of_placement][to]=now'
     },
 }
 
 
 WEBHOOK_URLS = {
     'ЕКБ': {
-        'до 300к': 'https://discord.com/api/webhooks/895273021894426665/XopIy4_TbxSaHDtJvpjydr1uilSBiStQfUCaELeRZ_QWJzsvBtMcQp0UvrkAc9wmhcRJ',
-        '300-700': 'https://discord.com/api/webhooks/895272908153303100/WHHt961CgT4af1J81ftkCpTF-_nyCRcma02EPqskSmwwOSSO03leFHs9W8CoUQhf0fZR',
-        '700-1,5млн': 'https://discord.com/api/webhooks/895272793229373460/W4t5v4q6mtsSs_L9jLLIK1QO1lHTol7WULody9BDXw1J4ZJW7CN3YK_M6pU6OOhL2kaG',
-        '1,5млн>': 'https://discord.com/api/webhooks/895272687583236097/IM0h0lH1-OPIeGuxLMLne6nHl26Qat7dAyeK28_Su4cCF6mGcVvyRkzK7QcWZnP0nxwq'
+        'до 300к': 'https://discord.com/api/webhooks/907966388424028212/m4r0tECCL58AOySkKgJUbjaCCGYJ6LNez3S8Q6GqzbQCmo36pkBY2syNfRHstKy-bcYy',
+        '300-700': 'https://discord.com/api/webhooks/907966473643892756/XOQgaRBuEEi0Ln1li9ZllusKC4MM1TROyaYSFZsF3OuDGhlJSU5nxb48ppxoWBqU7gFY',
+        '700-1,5млн': 'https://discord.com/api/webhooks/907966589972926504/t5Seod6i4-Ss-W8EBnbC3p_fdYWtssD5Qrkdcb2Rr7zkCgxitQ9pxCIV_7Zsqg9d5UNQ',
+        '1,5млн>': 'https://discord.com/api/webhooks/907966682813837322/suFUZvxW2gx0pmIGVUsfjoa3BzNN5BLECi1UgfrcNFnCCHQIKJKQ8ltFoINRFgM_2LO1'
     },
     'Казань': {
-        'до 300к': 'https://discord.com/api/webhooks/895272541717938196/-f8mh1g-HbzgIj5ZvDSsUTjelhFRawzlVgKxaKkdK2KgScThf1rbS4zH1hG6J6RU0IcT',
-        '300-700': 'https://discord.com/api/webhooks/895272419277807647/p5eigNdJpHk3h9bdqHqh6HWHrBqNR7JwHUgtpT25Lg-UtQpH88_gUAeRB0rDMXog_FpB',
-        '700-1,5млн': 'https://discord.com/api/webhooks/895272274037456897/1qnT5S8vjvhI40pWOxzqYUXChSDpKdXBoIds1tKGN7Rda85fvEs44HppwLGQkRJKiEPr',
-        '1,5млн>': 'https://discord.com/api/webhooks/895271472107515915/ll2z7VTfLkicye3AhxbJW5lWKExjrUKyBmjQxj2HaRrdWqJkK4AjEdbt4VBxDBbJMkhM'
+        'до 300к': 'https://discord.com/api/webhooks/907966756344201257/VX2GkSAuNLAHDZpYYcGffQL5s0izfuqIYTqs9FXd_iXmpFNfkWV_jQm5KPgHysRYpLPR',
+        '300-700': 'https://discord.com/api/webhooks/907966833464844368/XvERNDehsFW7f1e_iDhpP4NzYENxPJnkw2HKiLxuTR3z1czTB4EeJflAVLn8N14UDFbN',
+        '700-1,5млн': 'https://discord.com/api/webhooks/907966907112644608/Xv_lSJ0TEI2JC7-TmsKr5Jkz8tB3hJASQpMG2KkltOHLlM4q-R_DnBYKqyQyBnXyCrsT',
+        '1,5млн>': 'https://discord.com/api/webhooks/907966981590896661/BzcXUTOcWmJrsXpzmjmsgeB4-6Ryoj0puB9dwmAl2HWfHYtZRSgMvZytW_zTLdUQexY2'
     },
 }

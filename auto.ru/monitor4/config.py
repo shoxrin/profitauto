@@ -75,10 +75,10 @@ PARAMS = {
 
 WEBHOOK_URLS = {
     'ЕКБ': {
-        'до 300к': 'https://discord.com/api/webhooks/895273021894426665/XopIy4_TbxSaHDtJvpjydr1uilSBiStQfUCaELeRZ_QWJzsvBtMcQp0UvrkAc9wmhcRJ',
-        '300-700': 'https://discord.com/api/webhooks/895272908153303100/WHHt961CgT4af1J81ftkCpTF-_nyCRcma02EPqskSmwwOSSO03leFHs9W8CoUQhf0fZR',
-        '700-1,5млн': 'https://discord.com/api/webhooks/895272793229373460/W4t5v4q6mtsSs_L9jLLIK1QO1lHTol7WULody9BDXw1J4ZJW7CN3YK_M6pU6OOhL2kaG',
-        '1,5млн>': 'https://discord.com/api/webhooks/895272687583236097/IM0h0lH1-OPIeGuxLMLne6nHl26Qat7dAyeK28_Su4cCF6mGcVvyRkzK7QcWZnP0nxwq'
+        'до 300к': 'https://discord.com/api/webhooks/907850593639485470/_A5lND5GDkQyIfjkG8Qn7Uq_9v37G7kqeqElXxVlMcauoChU4BjIz9jA4wWdcXbzRir3',
+        '300-700': 'https://discord.com/api/webhooks/907966451858669590/5bpL_Uakw3Yp9e4n_b9Cws9_oXDQ_9bfQrjSC0bUiyvnIyd1vueG-op-bT4W0fb0Uqma',
+        '700-1,5млн': 'https://discord.com/api/webhooks/907966574462373928/xUaZNkLTpURJZFSXW1kjNoniJXvj8ZfHzbef4aRY9UxFuiN_z7JUvT9Q1DRcOH6YgFPH',
+        '1,5млн>': 'https://discord.com/api/webhooks/907966664027562039/PvYmN4k24GR4J9mgFIlSUVgFvdAO7Ivi46Tvrj48xQRrV0l8OqVrzEIRAyFWy4EZZhK_'
     },
     'Казань': {
         'до 300к': 'https://discord.com/api/webhooks/895272541717938196/-f8mh1g-HbzgIj5ZvDSsUTjelhFRawzlVgKxaKkdK2KgScThf1rbS4zH1hG6J6RU0IcT',

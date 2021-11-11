@@ -18,38 +18,39 @@ class Monitor:
     #Функция запуска монитора
     def run(self):
         while True:
-            #try:
-            #Перебор регионов
-            for geo in self.urls:
-                #Перебор url запросов
-                for url in self.urls[geo]:
-                    self.logger.info('Поиск новых объявлений! %s', str(geo) + ', ' + str(url))
-                    #Список объявлений
-                    announcements = self.parser.getAnnouncements(self.urls[geo][url])
-                    #Если есть объявления
-                    if announcements:
-                        #Перебор объявлений
-                        for announcement in announcements:
-                            self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
-                            #Отпрака объявления в дискорд
-                            mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
-                            #Если объявление не отпраленно
-                            if not(mesinfo):
-                                time.sleep(3)
-                                self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
-                                #Повторная отправка
+            try:
+                #Перебор регионов
+                for geo in self.urls:
+                    #Перебор url запросов
+                    for url in self.urls[geo]:
+                        self.logger.info('Поиск новых объявлений! %s', str(geo) + ', ' + str(url))
+                        #Список объявлений
+                        announcements = self.parser.getAnnouncements(self.urls[geo][url])
+                        #Если есть объявления
+                        if announcements:
+                            #Перебор объявлений
+                            for announcement in announcements:
+                                self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
+                                self.logger.info(str(announcement['ts'][0]) + ', ' + str(announcement['ts'][1]))
+                                #Отпрака объявления в дискорд
                                 mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
-                            time.sleep(1)
-                    #Если нет объявлений
-                    else:
-                        self.logger.info('Новых объявлений нет!')
-                    time.sleep(10)
-            #Задержка перед следуюшим регионом
-            time.sleep(8)
-            #except Exception as ex:
-            ##    self.logger.error('Ошибка! %s', ex)
-            ##    #Вслучае ошибки
-            #    time.sleep(5)
+                                #Если объявление не отпраленно
+                                if not(mesinfo):
+                                    time.sleep(3)
+                                    self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
+                                    #Повторная отправка
+                                    mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
+                                time.sleep(1)
+                        #Если нет объявлений
+                        else:
+                            self.logger.info('Новых объявлений нет!')
+                        time.sleep(10)
+                #Задержка перед следуюшим регионом
+                time.sleep(8)
+            except Exception as ex:
+                self.logger.error('Ошибка! %s', ex)
+                #Вслучае ошибки
+                time.sleep(5)
 
     #Отправка объявления в канал
     def sendMessage(self, announcement, webhook_url):
@@ -61,16 +62,15 @@ class Monitor:
                     title = announcement['title']
                 )
         try:
-            #Если объявление содержит изображение
+        #Если объявление содержит изображение
             if not(announcement['img'] is None):
-                embed.set_thumbnail(url = announcement['img']['src'])
+                embed.set_thumbnail(url = announcement['img']['xlink:href'])
                 embed.add_field(name = 'Цена', value = announcement['price'])
-                embed.add_field(name = 'Параметры', value = announcement['params'])
+                #embed.add_field(name = 'Параметры', value = announcement['params'])
                 embed.add_field(name = 'Местоположение', value = announcement['geo'])
                 embed.add_field(name = 'Ссылка', value = announcement['link'])
                 webhook.send(embed=embed)
                 self.logger.info('Отправлено - %s', announcement['title'])
-                self.logger.info('Отправлено c img - %s', announcement['img']['src'])
             #Если объявление не содержит изображение
             else:
                 embed.add_field(name = 'Цена', value = announcement['price'])
@@ -79,7 +79,6 @@ class Monitor:
                 embed.add_field(name = 'Ссылка', value = announcement['link'])
                 webhook.send(embed=embed)
                 self.logger.info('Отправлено - %s', announcement['title'])
-                self.logger.info('Отправлено без img - %s', announcement['img']['src'])
             
             return True
         except Exception as ex:

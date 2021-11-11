@@ -18,38 +18,38 @@ class Monitor:
     #Функция запуска монитора
     def run(self):
         while True:
-            #try:
-            #Перебор регионов
-            for geo in self.urls:
-                #Перебор url запросов
-                for url in self.urls[geo]:
-                    self.logger.info('Поиск новых объявлений! %s', str(geo) + ', ' + str(url))
-                    #Список объявлений
-                    announcements = self.parser.getAnnouncements(self.urls[geo][url])
-                    #Если есть объявления
-                    if announcements:
-                        #Перебор объявлений
-                        for announcement in announcements:
-                            self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
-                            #Отпрака объявления в дискорд
-                            mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
-                            #Если объявление не отпраленно
-                            if not(mesinfo):
-                                time.sleep(3)
-                                self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
-                                #Повторная отправка
+            try:
+                #Перебор регионов
+                for geo in self.urls:
+                    #Перебор url запросов
+                    for url in self.urls[geo]:
+                        self.logger.info('Поиск новых объявлений! %s', str(geo) + ', ' + str(url))
+                        #Список объявлений
+                        announcements = self.parser.getAnnouncements(self.urls[geo][url])
+                        #Если есть объявления
+                        if announcements:
+                            #Перебор объявлений
+                            for announcement in announcements:
+                                self.logger.info('Отправка - %s', announcement['title'] + ', ' + announcement['time'])
+                                #Отпрака объявления в дискорд
                                 mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
-                            time.sleep(1)
-                    #Если нет объявлений
-                    else:
-                        self.logger.info('Новых объявлений нет!')
-                    time.sleep(10)
-            #Задержка перед следуюшим регионом
-            time.sleep(8)
-            #except Exception as ex:
-            ##    self.logger.error('Ошибка! %s', ex)
-            ##    #Вслучае ошибки
-            #    time.sleep(5)
+                                #Если объявление не отпраленно
+                                if not(mesinfo):
+                                    time.sleep(3)
+                                    self.logger.info('Повторная отправка - %s', announcement['title'] + ', ' + announcement['time'])
+                                    #Повторная отправка
+                                    mesinfo = self.sendMessage(announcement, self.webhook_urls[geo][url])
+                                time.sleep(1)
+                        #Если нет объявлений
+                        else:
+                            self.logger.info('Новых объявлений нет!')
+                        time.sleep(10)
+                #Задержка перед следуюшим регионом
+                time.sleep(8)
+            except Exception as ex:
+                self.logger.error('Ошибка! %s', ex)
+                #Вслучае ошибки
+                time.sleep(5)
 
     #Отправка объявления в канал
     def sendMessage(self, announcement, webhook_url):
