@@ -19,15 +19,15 @@ WEBHOOK_URLS = {
         #'300-700': 'https://discord.com/api/webhooks/900704728353214466/NWgixfk3_nd6LSzaUV00K2E4IqckqGCdAeSmyoa013gQIZH7VcIgOyBCQzVzQC4jra8L',
         #'700-1,5млн': 'https://discord.com/api/webhooks/900704641820545054/wcPWP8uAqsTAUvJt_v1jKBV_Z2CfU7hVrbpAClnjkh9WjUN_BQkIaT7ERNx9qLS1ymqL',
         #'1,5млн>': 'https://discord.com/api/webhooks/900704451017469993/KR0VJxQrskaWJsEzRaEp2kYBQSJI5O7LC7R3vfrUkVrkwBcbJUWs0aawksZCI2tjaFIk'
-        'до 300к': 'https://discord.com/api/webhooks/906816875453906964/VEhsJ3XippVNjhWxIR8uDh-vrOWfC3iGMYVZHLdSHNAlCNQf7HQWh-_4nw6_EkEXPwAQ',
-        '300-700': 'https://discord.com/api/webhooks/906817070161854494/GH8iJMzz3xT7uJMUzP-DQfodtByGr0NFK03eLiPdXC8QwrmGCYvvoRCywhW1V8aNYF7n',
+        'до 300к': 'https://discord.com/api/webhooks/906816948187320340/GzAvaJaLX2J827mHFJXNR9tTFcLr0x96AitQ_yJTK404XzuuXU9lOXdkJ24nnFgNI4Tx',
+        '300-700': 'https://discord.com/api/webhooks/906817100033708064/dsKVFpqk2E9WdJmPsCO4jw2aw2TKKa-nqy5_xMjflHF4QMVDXJYKTyEGIXWmHSQ3MvJe',
         '700-1,5млн': 'https://discord.com/api/webhooks/907967079670489149/sbQw2ev7pankvWf3i4SS-rWho_MRHV8NoFLL4IAEFukyDheqk6s0QjOUkhZrL6iZkll2',
         '1,5млн>': 'https://discord.com/api/webhooks/906817349217320960/Tng_V5l-Vc7dgSx1fedMjuVv7XRMT-Q2Vjrv0dLq58dXQCt_vsziUhriP62OM2JNs5K_'
     },
     'Архангельск': {
         'до 300к': 'https://discord.com/api/webhooks/906817259287236648/FDN-kk-J5cIOtqcMVyfBPTfR7RNXRCNiaePf8vYrb07dBprxmUYGXjpYQDxD4fVeYYDR',
         '300-700': 'https://discord.com/api/webhooks/906817488648564756/TADybb944AisG2LSL3EqoFFOf0N2OfxwOwgSTuNFyV_Fkmf3rLvA-bfdH9cyMwSEo8aU',
-        '700-1,5млн': 'https://discord.com/api/webhooks/906817595221618738/hITB6XzyTXpO33vQoLfctR8cwc3S7wkygFCrnF1OCaG3JCqLde_iTmiwlhvMegQa2foN',
+        '700-1,5млн': 'https://discord.com/api/webhooks/906817617707286548/CNN44XElPUeVXZSrkUVjGCaAWeIMqv5WffACTWYI28YyE2BGfKogzWNDm5tTnb4aw4pC',
         '1,5млн>': 'https://discord.com/api/webhooks/908295029339095041/BURYxqFiHJms2lhjA-LDqIicaoe6eS4FDbnI2N9cVpdF-ewE85XtLK0JQk6aCBsyuin2'
     },
 }

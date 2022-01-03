@@ -75,9 +75,9 @@ PARAMS = {
 
 WEBHOOK_URLS = {
     'Самара': {
-        'до 300к': 'https://discord.com/api/webhooks/907849808763551745/WyfPXGUbpSmQ4b2vXMLT2keTXGRLL497hQVjP1jtlKTkee5ifVU384bVfoSm8dcMOqHl',
-        '300-700': 'https://discord.com/api/webhooks/907849964770689025/1SJwzzt3n1ObizbsuzTqAC8zvDBB8FTI7uX4L4weebTFm6lfF_CXQ4gP7E-3JsBahQ0c',
-        '700-1,5млн': 'https://discord.com/api/webhooks/907850044978372608/FP_efYg7SLm0HZpY7R_BxNdPiAbh67yoH4HLG1gz1gPb4RTY68_g29unGT0W6Y1f5cHD',
+        'до 300к': 'https://discord.com/api/webhooks/907849892658053140/vLxLXKDGw589ohAD_ZCJiHRX7FiA3kCHzshqW_inDtms4da1VUwY7cVvvs0tdH5nEKkC',
+        '300-700': 'https://discord.com/api/webhooks/907849999054934066/SfrrR8MSaZ4OqLP4Mu4xtuBq7VHiiKYfl3SK0R3mI5iZGQVYhJvH4fxYhx6QACVkVCM0',
+        '700-1,5млн': 'https://discord.com/api/webhooks/907850086048993290/bTJHQiU8KNkCdm31vtMYTLD2i-yUrXANemwB9EmrDUoCxLYr5-ZMSakdCchB59FpG3wh',
         '1,5млн>': 'https://discord.com/api/webhooks/907850127849426994/ir1HswUrdvLBI8owEBxPCAjQeVdIJTjd6QPizLUDOSPFeAEjGAAkG5nJqwEj53U_lipQ'
     },
     'Омск': {
