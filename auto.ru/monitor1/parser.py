@@ -45,7 +45,8 @@ class Parser:
 
     def getTmp(self, url, params):
         data = self.getData(url, params)
-        self.tmp.append(('https://auto.ru/' + data[4]['category'] + '/' + data[4]['section'] + '/sale/' + data[4]['vehicle_info']['mark_info']['code'] + '/' + data[4]['vehicle_info']['model_info']['code'] + '/' + data[4]['saleId']).lower())
+        print(len(data))
+        self.tmp.append(('https://auto.ru/' + data[0]['category'] + '/' + data[0]['section'] + '/sale/' + data[0]['vehicle_info']['mark_info']['code'] + '/' + data[0]['vehicle_info']['model_info']['code'] + '/' + data[0]['saleId']).lower())
 
     #Функция для сортировки объявлений и получении нужной информации
     def getOffers(self, url, params):
