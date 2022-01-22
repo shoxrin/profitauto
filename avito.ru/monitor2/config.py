@@ -16,10 +16,10 @@ URLS = {
 
 WEBHOOK_URLS = {
     'МСК': {
-        'до 300к': 'https://discord.com/api/webhooks/930335347370516520/kY2wCvlJZ27Qc08nqUn7je5LKGGj1nKpIr8N_zE80DER0dFES19tiK2FSkLbMk3FoKY9',
-        '300-700': 'https://discord.com/api/webhooks/930335426462511105/Y8dsZy4t89FSeZeE7swWM9ERC2bA2Bocj2cq3M7Cz6UBfOuoZiDjnvwiMMyHadV2Pp7Y',
-        '700-1,5млн': 'https://discord.com/api/webhooks/930335469005316127/yhhOXdOSBFjGVs9y7tpP6kMolxFMLzSSnVYVf9PC9x231pkYiLQo1eiV6zmZ_vPspRTe',
-        '1,5млн>': 'https://discord.com/api/webhooks/930335527553617980/72YFjWIHQ5cL0UdcENW6jXJ2CYGK2vcuI1kck_x8xGh9dqT4TX6cmh1gciFh9KLQFzXK'
+        'до 300к': 'https://discord.com/api/webhooks/934378689934790698/gsnBvNsUOYPvG_LIKNJW1NU_rQwcglHfusXPiSpbcWqmns5C8U2fm3esYDF8CwnfIuR3',
+        '300-700': 'https://discord.com/api/webhooks/934378775276314697/47JIRHNMYniffd5ckQyffjwWOiq5PEEMRMjMQuBnS2XZtfxEiQ0eF-4i5Mm3fWGScppc',
+        '700-1,5млн': 'https://discord.com/api/webhooks/934378837091942410/PXutMX0D9cNWaAVPcoWi3i38nLGwZSxBoM-X6uju88ancY4fb0S23yjB5ZuuyyBo5AyL',
+        '1,5млн>': 'https://discord.com/api/webhooks/934378875255918622/jaUFroKDWpZ30Ow6jn50JFtrQJmzw3KvKCV_E7gBiEuCi95LcDjQlaGwaySmJXO8T-09'
     },
     'Ростов-на-дону': {
         'до 300к': 'https://discord.com/api/webhooks/907327712799121449/ahnwgjQwwbpy8XeK4j36Q8LGxiIY-lL8GqWG6b0VfXXt36mpEEk63WQSfoQscDvvbHJC',
