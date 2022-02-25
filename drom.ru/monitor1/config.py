@@ -19,15 +19,15 @@ WEBHOOK_URLS = {
         #'300-700': 'https://discord.com/api/webhooks/900704728353214466/NWgixfk3_nd6LSzaUV00K2E4IqckqGCdAeSmyoa013gQIZH7VcIgOyBCQzVzQC4jra8L',
         #'700-1,5млн': 'https://discord.com/api/webhooks/900704641820545054/wcPWP8uAqsTAUvJt_v1jKBV_Z2CfU7hVrbpAClnjkh9WjUN_BQkIaT7ERNx9qLS1ymqL',
         #'1,5млн>': 'https://discord.com/api/webhooks/900704451017469993/KR0VJxQrskaWJsEzRaEp2kYBQSJI5O7LC7R3vfrUkVrkwBcbJUWs0aawksZCI2tjaFIk'
-        'до 300к': 'https://discord.com/api/webhooks/939795327555358760/u3ypOeuhMVzzJ9ZKuzajOvxclaqPaxDbtqhgUEhUF5Y3rci_i9oW21jFyXxpByhg6wy0',
-        '300-700': 'https://discord.com/api/webhooks/939795435470598144/sNG5opqxBzkMWCd1A_jGaOdnFVKShzPiSJKyGNG_kiyTCsQKbNpAVAjRvFn0Q_oVdTFp',
-        '700-1,5млн': 'https://discord.com/api/webhooks/939795468416876575/lCTvaD0GGW67kY32zjkyhVOUQ7r90hs-uob5G4pIdXaXKrYi7Mt9scEEd35C3MgoV9aT',
-        '1,5млн>': 'https://discord.com/api/webhooks/939795506438238228/pj5--me0J7ItedSRYOYqdomL1s_QRmWhEBkezC6X5fwXEkP4wvaHUlZQoXHXDv51mF0y'
+        'до 300к': 'https://discord.com/api/webhooks/946626944651370537/vCN4Lqrf3qYz37SIPiTZGH3hRIIQ9lt50KZ7rmH20JWny7RhUvWGbC-nESNBtiHgMHMH',
+        '300-700': 'https://discord.com/api/webhooks/946627044052193330/Swrk5_cGzV64MIrOLtoqUJCKhKFkWM4G5TLqpAgiwBCk5QgBTmvKbskEINXbKySLwkEF',
+        '700-1,5млн': 'https://discord.com/api/webhooks/946627083805798421/8DHPZWzvPeUR8291Zx869TE570iCTfJeFUbhDHBfK56DZgJyClcdvqZJnbbo5dUvPmSS',
+        '1,5млн>': 'https://discord.com/api/webhooks/946627126440890449/QyCuj02OcFxLuQ_Mf8WSbQPrDmeYOhSVctg4nlFigkqJKHcnYlsTS5IyGM7a_vwI2iID'
     },
     'Архангельск': {
-        'до 300к': 'https://discord.com/api/webhooks/939795545986301972/a165IKtfB0kpugHUtMpeP2HZ0jVgodW9597w4I6hQwaPjPoa6W9AsDbUHPpI6udyaFcw',
-        '300-700': 'https://discord.com/api/webhooks/939795588105502770/BH17BEd-r9-S61vf6qBHa5QytAc4RiGXljEt5OIfb9Uru-zj1hBI6MVflP02kuEEnnOR',
-        '700-1,5млн': 'https://discord.com/api/webhooks/939795626374352926/EW0jiZn6jZ5Xh3n3-XkCtLTZGMh-GoAZvMx5JvzhTnw2f6TUDDqIgG1DMFfXbyZcdZTf',
-        '1,5млн>': 'https://discord.com/api/webhooks/939795660406923294/tcvry8c-w4lS-1c971EmdXWP8eiVD5QOhCSKu7C2qeVTFkKeoYX5SSWSBH5DX-Qx9oci'
+        'до 300к': 'https://discord.com/api/webhooks/946627176109850694/Y9ktYb_eoH4fqFqWccMfYRTLfAO4oGtjBVPQrk6sq245xf2E7JOTak9v1l_NT-1I0cP1',
+        '300-700': 'https://discord.com/api/webhooks/946627217641865246/-Bl6-8mgd9EC6dASWdhvrGReVtcF1rD72Xd94bsSwWwjTwO1HJLemHqiEGh4nX54vIdm',
+        '700-1,5млн': 'https://discord.com/api/webhooks/946627257357705276/G1Oz2buTzpR1i8lh78fFPlRRPbuG3VxIGRdZfS4KO4nK14Pkj4POlmg-CSr5uQCYqH5w',
+        '1,5млн>': 'https://discord.com/api/webhooks/946627298105360414/85Avnuq9pWDWTiVdAH-2bRs609IOLENe0vIj2C_x4rqjqzizkicu8RSkeueiSEICxzHR'
     },
 }

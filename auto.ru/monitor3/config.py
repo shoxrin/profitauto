@@ -75,15 +75,15 @@ PARAMS = {
 
 WEBHOOK_URLS = {
     'Самара': {
-        'до 300к': 'https://discord.com/api/webhooks/939795992440614953/1liBotVRH1hVApHuFskakTOyOioJmOlOOSM-rFGhCTBo8VYaYcCc35uw01LqlPyokGp5',
-        '300-700': 'https://discord.com/api/webhooks/939796027014271029/xu9W2d-2otY9NQWDxzvj6t6q8xeya3LNaU5gi5uHTCOEYvDelPJnERkM_Y_7n-JRpteO',
-        '700-1,5млн': 'https://discord.com/api/webhooks/939796066428137534/JFt7ggxrdQtq5KQb5Lta24nCaYViVwYF14D-AuxoNvA4p5tiOQl47LMc96Ih0dDH_k1I',
-        '1,5млн>': 'https://discord.com/api/webhooks/939796214889709588/g5Mo4onIA9PpzpknlqhHI9pSZhsxkxZ_lccFCRYx0gxXZrqGYsJP_kQmMjpspPg0uB9G'
+        'до 300к': 'https://discord.com/api/webhooks/945707483928858646/agnhI9YoJxvboN2jLqBiVMotFScpEGSwWWTVD10sEhD1UaeAH_byVEHmqsNZVVOEHYUm',
+        '300-700': 'https://discord.com/api/webhooks/945707550114996292/x1UkxKyOb8Tb-vgmVs_Aujc2yWTC4Mrgq8JSrYqw4ggFgu1lQabopoAjzRPeCrfUpIyW',
+        '700-1,5млн': 'https://discord.com/api/webhooks/945707605509156925/8iGDJfn3kqBU9fVceWKyh4f2dNQLP4LfoIRBjgFl4mvnzfnIvCDTm6btZWokMKV5Lw7q',
+        '1,5млн>': 'https://discord.com/api/webhooks/946630117801746462/J03oCqjYLCiSeDrSBmhqiIti8Naz9qNQXz_zTyDDKBxkJ7pOMjylTLdWtMOfIUsNYCH3'
     },
     'Омск': {
-        'до 300к': 'https://discord.com/api/webhooks/939796261131939860/3S2lr-fSHRgM4NWm1pkl_qBiEW0DrSaAXrlHmnMzsdaQaYgxJy1LkKGjJceI1n4mDaVg',
-        '300-700': 'https://discord.com/api/webhooks/939796305977434122/2nY7O9ES9aufLeKp6MAep1sK_spWIK-v_Qzv8gBmvdAsa9Kqf008-RHudey_n1Y7Y8gQ',
-        '700-1,5млн': 'https://discord.com/api/webhooks/939796341335416852/eTzSLouLeWISEbzehasNqVKypGMyP5uj7hsFQT-0Br8EXL6Evnqm5YpMJ50r-C1JLrTD',
-        '1,5млн>': 'https://discord.com/api/webhooks/939796375665774622/rc1_Ep926QhPB_7HDevU75Kv6YV_jjKxf0Pq52ZAJPtrLnSACk0WI1OwDAqdNbwPrnZ5'
+        'до 300к': 'https://discord.com/api/webhooks/946627580277166201/d5uP-WZPHpizV9NcACQ3dSr4_-SVkp3AU6FQ5e_Nj8K-95UuATSyLvx0sm1gLJpYRpCy',
+        '300-700': 'https://discord.com/api/webhooks/946627614745980978/d-NxhReXgXPvd48D6ylQ2QpZnBCgIqzGofRGctALtHp8SZ2cresJshYOHjlBu9xFOo6o',
+        '700-1,5млн': 'https://discord.com/api/webhooks/946627651517448232/4NtEpgN7Yj-M8qnvi8dqqQE-_es6kUEYBw8STLVX-mHukHLO6Gbp1qZte1f2H8LAysUD',
+        '1,5млн>': 'https://discord.com/api/webhooks/946627685877170237/EoPEKvolQbG5Lqx2trQcNy68voARM18bz9AmQN-v9uxnUzvbRmDU7qyaXU3TI7JjYUQm'
     },
 }

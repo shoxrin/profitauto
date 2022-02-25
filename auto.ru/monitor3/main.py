@@ -104,17 +104,17 @@ class Monitor:
         self.logger.setLevel(logging.INFO)
 
         c_handler = logging.StreamHandler()
-        f_handler = logging.FileHandler('../logs/monitor3.log')
+        #f_handler = logging.FileHandler('../logs/monitor3.log')
         c_handler.setLevel(logging.INFO)
-        f_handler.setLevel(logging.INFO)
+        #f_handler.setLevel(logging.INFO)
 
         c_format = logging.Formatter('[%(asctime)s][%(levelname)s]:%(message)s', datefmt='%H:%M:%S')
-        f_format = logging.Formatter('[%(asctime)s][%(levelname)s]:%(message)s', datefmt='%H:%M:%S')
+        #f_format = logging.Formatter('[%(asctime)s][%(levelname)s]:%(message)s', datefmt='%H:%M:%S')
         c_handler.setFormatter(c_format)
-        f_handler.setFormatter(f_format)
+        #f_handler.setFormatter(f_format)
 
         self.logger.addHandler(c_handler)
-        self.logger.addHandler(f_handler)
+        #self.logger.addHandler(f_handler)
 
 if __name__ == '__main__':
     Monitor(PARAMS, WEBHOOK_URLS).run()
